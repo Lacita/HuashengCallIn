@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huasheng.dingding.mapper.ClockInMapper">
+
+    <resultMap id="callInRecord" type="com.huasheng.dingding.domain.entity.ClockIn">
+        <id property="id" column="id"></id>
+        <result property="userName" column="user_name"></result>
+        <result property="clockDate" column="clock_date"></result>
+        <result property="dept" column="dept"></result>
+        <result property="title" column="title"></result>
+        <result property="jobNumber" column="job_number"></result>
+        <result property="location" column="location"></result>
+        <result property="clockInTime" column="clock_in_time" ></result>
+        <result property="project" column="project"></result>
+        <result property="note" column="note"></result>
+        <result property="callInType" column="name"></result>
+    </resultMap>
+
+    <sql id="BASE">
+        a.id,user_name,clock_date,dept,title,job_number,
+        location,
+        DATE_FORMAT(clock_in_time,'%Y-%m-%d %H:%i:%s') as clock_in_time,
+        project,note,`name`
+    </sql>
+
+    <select id="selectByCallInCondition" resultMap="callInRecord">
+        select
+        <include refid="BASE"></include>
+        from clock_in a
+                          inner join
+                      call_in_type b
+                      on a.type = b.id
+            ${ew.customSqlSegment}
+    </select>
+
+    <select id="exportByCallInCondition" resultMap="callInRecord">
+        select
+        <include refid="BASE"></include>
+        from clock_in a
+        inner join
+        call_in_type b
+        on a.type = b.id
+        ${ew.customSqlSegment}
+    </select>
+
+
+</mapper>

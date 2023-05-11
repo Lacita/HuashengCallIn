@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huasheng.dingding.mapper.ClockInProjectMapper">
+    <update id="upProjectStatus">
+        update project_call_in set project_status = project_status^1 where id = #{id}
+    </update>
+
+    <resultMap id="callInRecord" type="com.huasheng.dingding.domain.entity.ClockIn">
+        <id property="id" column="id"></id>
+        <result property="userName" column="user_name"></result>
+        <result property="clockDate" column="user_name"></result>
+        <result property="dept" column="dept"></result>
+        <result property="title" column="title"></result>
+        <result property="jobNumber" column="job_number"></result>
+        <result property="location" column="location"></result>
+        <result property="clockInTime" column="clockIn_time"></result>
+        <result property="project" column="project"></result>
+        <result property="note" column="note"></result>
+        <result property="callInType" column="name"></result>
+    </resultMap>
+
+    <select id="selectByCallInCondition" resultMap="callInRecord">
+        select * from clock_in a
+        inner join
+        call_in_type b
+        on a.type = b.id
+        ${ew.customSqlSegment}
+    </select>
+
+</mapper>
