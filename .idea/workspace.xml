@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3820f067-7438-4610-b62d-7051cb12d1bf" name="Default Changelist" comment="" />
+    <list default="true" id="3820f067-7438-4610-b62d-7051cb12d1bf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/config/DingTalkUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/config/DingTalkUtils.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,6 +38,7 @@
     </option>
   </component>
   <component name="ProjectId" id="2PDb1gXVlLzVCnQs1prmhmILZWf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
@@ -50,6 +53,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/dingding/src/main/resources" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.ignored.files" />
   </component>
   <component name="ReactorSettings">
@@ -137,7 +141,7 @@
       <workItem from="1683703204920" duration="8029000" />
       <workItem from="1683723395619" duration="3657000" />
       <workItem from="1683730426853" duration="854000" />
-      <workItem from="1683772555512" duration="2070000" />
+      <workItem from="1683772555512" duration="2403000" />
     </task>
     <servers />
   </component>
