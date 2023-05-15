@@ -16,7 +16,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
-
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
@@ -27,12 +26,9 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class DingTalkUtils {
 
-    /***
-     * 填写小程序信息
-     */
-    public static final String APP_KEY = "";
+    public static final String APP_KEY = "dingo19ec6jizvk3gm3i";
 
-    public static final String APP_SECRET = "";
+    public static final String APP_SECRET = "s2lrO52GZ7-DiBIZNdz5swyO01UQBFNtvinkcYWzDEBOHbIfq-mhkFDIfAn_IDKx";
 
     @Resource
     private RedisTemplate<String,Object> redisTemplate;

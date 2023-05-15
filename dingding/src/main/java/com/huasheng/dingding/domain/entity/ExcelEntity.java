@@ -32,14 +32,30 @@ public class ExcelEntity {
     @ExcelProperty("打卡位置")
     @ColumnWidth(20)
     private String location;
-    @ExcelProperty("打卡时间")
+    @ExcelProperty({"打卡时间","上班时间"})
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ColumnWidth(20)
-    private Date clockInTime;
+    private String clockInTime;
+    @ExcelProperty({"打卡时间","下班时间"})
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @ColumnWidth(20)
+    private String knockOffTime;
+    @ExcelProperty({"加班时间","加班开始时间"})
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @ColumnWidth(20)
+    private String overTime;
+    @ExcelProperty({"加班时间","加班结束时间"})
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @ColumnWidth(20)
+    private String overTimeEnd;
     @ExcelProperty("打卡类型")
     private String type;
     @ExcelProperty("打卡项目")
     private String project;
+    @ExcelProperty({"外勤地点","外勤上班地点"})
+    private String fieldLocation;
+    @ExcelProperty({"外勤地点","外勤下班地点"})
+    private String fieldKnockLocation;
     @ExcelProperty("备注")
     private String note;
 

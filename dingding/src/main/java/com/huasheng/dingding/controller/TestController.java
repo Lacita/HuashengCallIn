@@ -2,6 +2,9 @@ package com.huasheng.dingding.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.huasheng.dingding.common.CallInUtils.CallInOperate;
+import com.huasheng.dingding.common.CallInUtils.KnockOffOperate;
+import com.huasheng.dingding.config.DateUtils;
 import com.huasheng.dingding.config.RedisUtils;
 import com.huasheng.dingding.domain.entity.ClockIn;
 import com.huasheng.dingding.mapper.ClockInMapper;
@@ -22,6 +25,12 @@ public class TestController {
 
     @Resource
     private ClockInMapper clockInMapper;
+
+    @Resource
+    private CallInOperate callInOperate;
+
+    @Resource
+    private KnockOffOperate knockOffOperate;
 
     @GetMapping("/1")
     public List<ClockIn> test (){
@@ -44,6 +53,17 @@ public class TestController {
         System.out.println(inPage.getRecords());
         System.out.println(inPage.getTotal());
         return inPage.getRecords();
+    }
+
+    @GetMapping("/2")
+    public void test2(){
+        boolean overTime = DateUtils.isOverTime();
+        if (overTime){
+            System.out.println("true");
+        }
+        else {
+            System.out.println("false");
+        }
     }
 
 }

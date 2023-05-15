@@ -1,5 +1,8 @@
 package com.huasheng.dingding.common.Constant;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RedisConstant {
 
     /***
@@ -28,8 +31,47 @@ public class RedisConstant {
     public static double LIMIT_DISTANCE = 0.2 ;
 
     /***
-     * 外勤打卡类型
+     * 上班打卡
      */
-    public static String FIELD_TYPE = "4" ;
+    public static String CALL_IN_TYPE = "1" ;
+
+    /***
+     * 下班班打卡
+     */
+    public static String KNOCK_OFF_TYPE = "2" ;
+
+    /***
+     * 外勤上班打卡类型
+     */
+    public static String FIELD_CALL_IN_TYPE = "3" ;
+
+    /***
+     * 外勤下班打卡类型
+     */
+    public static String FIELD_KNOCK_TYPE = "4" ;
+
+    /***
+     * 加班打卡上班类型
+     */
+    public static String OVER_TIME_TYPE = "5" ;
+
+    /***
+     * 加班打卡下班类型(暂未使用)
+     */
+    public static String OVER_TIME_END_TYPE = "6" ;
+
+    /***
+     * 装载打卡类型具体的策略类
+     */
+    public static Map<String,String> TYPE = new HashMap<>();
+
+    static {
+        TYPE.put("1","callInOperate");
+        TYPE.put("2","knockOffOperate");
+        TYPE.put("3","fieldTypeOperate");
+        TYPE.put("4","fieldKnockTypeOperate");
+        TYPE.put("5","overTimeOperate");
+    }
+
 
 }

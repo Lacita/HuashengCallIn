@@ -3,6 +3,7 @@ package com.huasheng.dingding.domain.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -30,10 +31,19 @@ public class ClockIn implements Serializable {
 //  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
 //  @JSONField(format = "yyyy-MM-dd HH:mm:ss")
-  private java.util.Date clockInTime;
+  private String clockInTime;
   private String type;
   private String project;
   private String note;
+  @TableField(exist = false)
   private String callInType;
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+  private String overTime;
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+  private String overTimeEnd;
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
+  private String knockOffTime;
+  private String fieldLocation;
+  private String fieldKnockLocation;
 
 }

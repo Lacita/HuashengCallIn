@@ -2,25 +2,57 @@ server:
   port: 8090
 # DataSource Config
 spring:
+  main:
+    allow-bean-definition-overriding: true
   profiles:
     active: yml
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    username: root
-    password: 123456
-    url: jdbc:mysql://127.0.0.1/ddDaka?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true&allowMultiQueries=true
-    type: com.alibaba.druid.pool.DruidDataSource
-    druid:
-      initialSize: 10
-      minIdle: 2
-      maxActive: 20
-      maxWait: 60000
-      timeBetweenEvictionRunsMillis: 60000
-      minEvictableIdleTimeMillis: 300000
-      validationQuery: SELECT 1 FROM DUAL
+  shardingsphere:
+    datasource:
+      props:
+        sql:
+          show: true
+      names: dddaka
+      dddaka:
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://127.0.0.1/dddaka?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true&allowMultiQueries=true
+        driver-class-name: com.mysql.jdbc.Driver
+        username: root
+        password: 123456
+        initialSize: 10
+        minIdle: 2
+        maxActive: 20
+        maxWait: 60000
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: SELECT 1 FROM DUAL
+    sharding:
+      tables:
+        clock_in:
+          actual-data-nodes: dddaka.clock_in$->{0..2}
+          key-generator:
+            type: SNOWFLAKE
+            column: id
+          table-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: dddaka.clock_in$->{id % 3}
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    username: root
+#    password: 123456
+#    url: jdbc:mysql://127.0.0.1/ddDaka?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true&allowMultiQueries=true
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    druid:
+#      initialSize: 10
+#      minIdle: 2
+#      maxActive: 20
+#      maxWait: 60000
+#      timeBetweenEvictionRunsMillis: 60000
+#      minEvictableIdleTimeMillis: 300000
+#      validationQuery: SELECT 1 FROM DUAL
   redis:
       database: 0
       host: 127.0.0.1
@@ -45,6 +77,6 @@ mybatis-plus:
     #
     map-underscore-to-camel-case: true
     call-setters-on-nulls: true
-    # log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 

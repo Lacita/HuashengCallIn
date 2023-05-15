@@ -16,13 +16,22 @@
         <result property="project" column="project"></result>
         <result property="note" column="note"></result>
         <result property="callInType" column="name"></result>
+        <result property="knockOffTime" column="knock_off_time"></result>
+        <result property="overTime" column="over_time"></result>
+        <result property="overTimeEnd" column="over_time_end"></result>
+        <result property="fieldLocation" column="field_location"></result>
+        <result property="fieldKnockLocation" column="field_knock_location"></result>
     </resultMap>
 
     <sql id="BASE">
         a.id,user_name,clock_date,dept,title,job_number,
         location,
         DATE_FORMAT(clock_in_time,'%Y-%m-%d %H:%i:%s') as clock_in_time,
-        project,note,`name`
+        project,note,`name`,
+        DATE_FORMAT(knock_off_time,'%Y-%m-%d %H:%i:%s') as knock_off_time,
+        DATE_FORMAT(over_time,'%Y-%m-%d %H:%i:%s') as over_time,
+        DATE_FORMAT(over_time_end,'%Y-%m-%d %H:%i:%s') as over_time_end,
+        field_location,field_knock_location
     </sql>
 
     <select id="selectByCallInCondition" resultMap="callInRecord">

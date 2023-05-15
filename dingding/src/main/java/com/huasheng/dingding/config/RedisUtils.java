@@ -27,7 +27,6 @@ public class RedisUtils {
         geoOperations.add(RedisConstant.GRO_KEY,new Point(RedisConstant.LOCAL_LONGITUDE,RedisConstant.LOCAL_LATITUDE),"local");
         geoOperations.add(RedisConstant.GRO_KEY,new Point(longitude,latitude),userId);
         Distance distance = geoOperations.distance(RedisConstant.GRO_KEY, "local", userId,Metrics.KILOMETERS);
-        System.out.println(distance);
         assert distance != null;
         geoOperations.remove(RedisConstant.GRO_KEY,userId);
         return distance.getValue();
