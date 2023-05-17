@@ -5,59 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3820f067-7438-4610-b62d-7051cb12d1bf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_18_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_antlr4_runtime_4_7_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shardingsphere_sharding_core_api_4_0_0_RC1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shardingsphere_sharding_core_common_4_0_0_RC1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shardingsphere_sharding_core_entry_4_0_0_RC1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shardingsphere_sharding_core_execute_4_0_0_RC1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shardingsphere_sharding_core_merge_4_0_0_RC1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shardingsphere_sharding_core_optimize_4_0_0_RC1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shardingsphere_sharding_core_parse_common_4_0_0_RC1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shardingsphere_sharding_core_parse_mysql_4_0_0_RC1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shardingsphere_sharding_core_parse_oracle_4_0_0_RC1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shardingsphere_sharding_core_parse_postgresql_4_0_0_RC1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shardingsphere_sharding_core_parse_spi_4_0_0_RC1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shardingsphere_sharding_core_parse_sqlserver_4_0_0_RC1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shardingsphere_sharding_core_rewrite_4_0_0_RC1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shardingsphere_sharding_core_route_4_0_0_RC1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shardingsphere_sharding_jdbc_core_4_0_0_RC1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shardingsphere_sharding_jdbc_spring_boot_starter_4_0_0_RC1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shardingsphere_sharding_transaction_core_4_0_0_RC1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_indy_2_4_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_36.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/common/CallInUtils/CallInOperate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/common/CallInUtils/CallInStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/common/CallInUtils/CallInStrategyFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/common/CallInUtils/FieldKnockTypeOperate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/common/CallInUtils/FieldTypeOperate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/common/CallInUtils/KnockOffOperate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/common/CallInUtils/OverTimeOperate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_druid_1_1_20.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_druid_1_2_8.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_druid_spring_boot_starter_1_1_20.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_failureaccess_1_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_27_0_1_android.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_listenablefuture_9999_0_empty_to_avoid_conflict_with_guava.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_compat_qual_2_5_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_mojo_animal_sniffer_annotations_1_17.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dingding/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/common/Constant/RedisConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/common/Constant/RedisConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/config/DateUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/config/DateUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/config/DingTalkUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/config/DingTalkUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/config/RedisUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/config/RedisUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/controller/TestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/domain/entity/ClockIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/domain/entity/ClockIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/domain/entity/ExcelEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/domain/entity/ExcelEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/common/CallInUtils/CallInOperate.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/common/CallInUtils/CallInOperate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/service/Imp/DdServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/service/Imp/DdServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dingding/src/main/resources/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/resources/application-prod.yml1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dingding/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dingding/src/main/resources/com/huasheng/dingding/mapper/ClockInMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/resources/com/huasheng/dingding/mapper/ClockInMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +22,14 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -145,19 +103,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="DingdingApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="dingding" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.huasheng.dingding.DingdingApplication" />
@@ -213,11 +158,26 @@
       <workItem from="1683893860047" duration="9145000" />
       <workItem from="1683940186589" duration="11502000" />
       <workItem from="1684053285423" duration="5334000" />
+      <workItem from="1684141543216" duration="959000" />
+      <workItem from="1684158380375" duration="506000" />
+      <workItem from="1684316812215" duration="2427000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

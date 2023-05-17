@@ -89,14 +89,14 @@ public class DdServiceImp implements DdService {
     public Result<String> clockInMessage(String userName, String userId, String type, String location, String project,String note,double longitude,double latitude) {
 
         // 判断是否处于打卡范围,以及是否是外勤类型
-        if (!this.checkIfDistance(longitude,latitude,userId) &&
-                !(type.equals(RedisConstant.FIELD_CALL_IN_TYPE)||type.equals(RedisConstant.FIELD_KNOCK_TYPE)) ) {
-            return ResultUtils.ERROR("不在打卡范围内");
-        }
+//        if (!this.checkIfDistance(longitude,latitude,userId) &&
+//                !(type.equals(RedisConstant.FIELD_CALL_IN_TYPE)||type.equals(RedisConstant.FIELD_KNOCK_TYPE)) ) {
+//            return ResultUtils.ERROR("不在打卡范围内");
+//        }
         // 后端处理防抖
-        Boolean ifAbsent = redisTemplate.opsForValue().setIfAbsent(RedisConstant.REDIS_KEY + userId + type, 1, 1L, TimeUnit.MINUTES);
+        Boolean ifAbsent = redisTemplate.opsForValue().setIfAbsent(RedisConstant.REDIS_KEY + userId + type, 1, 15L, TimeUnit.SECONDS);
         if (BooleanUtil.isFalse(ifAbsent)){
-            return ResultUtils.ERROR("请1分钟后尝试");
+            return ResultUtils.ERROR("请15秒后尝试");
         }
         // 判断打卡类型
         String beanType = RedisConstant.TYPE.get(type);
