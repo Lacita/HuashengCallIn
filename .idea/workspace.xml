@@ -7,6 +7,7 @@
     <list default="true" id="3820f067-7438-4610-b62d-7051cb12d1bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/common/CallInUtils/CallInOperate.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/common/CallInUtils/CallInOperate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/common/CallInUtils/FieldTypeOperate.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/common/CallInUtils/FieldTypeOperate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/service/Imp/DdServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/service/Imp/DdServiceImp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -160,7 +161,7 @@
       <workItem from="1684053285423" duration="5334000" />
       <workItem from="1684141543216" duration="959000" />
       <workItem from="1684158380375" duration="506000" />
-      <workItem from="1684316812215" duration="2427000" />
+      <workItem from="1684316812215" duration="2870000" />
     </task>
     <servers />
   </component>
