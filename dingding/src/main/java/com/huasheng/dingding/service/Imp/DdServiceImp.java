@@ -14,6 +14,7 @@ import com.huasheng.dingding.common.Result.Result;
 import com.huasheng.dingding.common.Result.ResultUtils;
 import com.huasheng.dingding.config.DingTalkUtils;
 import com.huasheng.dingding.config.RedisUtils;
+import com.huasheng.dingding.config.TokenUtils;
 import com.huasheng.dingding.domain.dto.ClockQueryDto;
 import com.huasheng.dingding.domain.dto.LoginUser;
 import com.huasheng.dingding.domain.entity.CallInProject;
@@ -34,6 +35,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
@@ -81,7 +83,8 @@ public class DdServiceImp implements DdService {
         if (status != 1){
             return ResultUtils.ERROR("账户已禁用");
         }
-        return ResultUtils.SUCCESS_DATA(loginUser.getId());
+        String sign = TokenUtils.sign(loginUser.getUserName());
+        return ResultUtils.SUCCESS_DATA(sign);
     }
 
     @Override
@@ -94,7 +97,7 @@ public class DdServiceImp implements DdService {
             return ResultUtils.ERROR("不在打卡范围内");
         }
         // 后端处理防抖
-        Boolean ifAbsent = redisTemplate.opsForValue().setIfAbsent(RedisConstant.REDIS_KEY + userId + type, 1, 15L, TimeUnit.SECONDS);
+        Boolean ifAbsent = redisTemplate.opsForValue().setIfAbsent(RedisConstant.REDIS_KEY + userId + type, userId, 15L, TimeUnit.SECONDS);
         if (BooleanUtil.isFalse(ifAbsent)){
             return ResultUtils.ERROR("请15秒后尝试");
         }
@@ -102,7 +105,6 @@ public class DdServiceImp implements DdService {
         String beanType = RedisConstant.TYPE.get(type);
         CallInStrategy bean = applicationContext.getBean(beanType, CallInStrategy.class);
         return bean.callInStrategy(userName,userId,type,location,project,note);
-
     }
 
     @Override
@@ -153,6 +155,7 @@ public class DdServiceImp implements DdService {
         clockInQueryWrapper.ge(StringUtils.isNotBlank(startTime),"clock_date",startTime);
         clockInQueryWrapper.le(StringUtils.isNotBlank(endTime),"clock_date",endTime);
         clockInQueryWrapper.eq(StringUtils.isNotBlank(type),"type",type);
+        clockInQueryWrapper.notIn("project","非项目");
         clockInQueryWrapper.orderByDesc("clock_in_time");
         try {
 //            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -170,7 +173,6 @@ public class DdServiceImp implements DdService {
             log.error("报表查询异常，本次异常代码为:{}",e.getMessage());
             throw new MyException(e.getMessage());
         }
-
     }
 
     @Override
@@ -229,6 +231,123 @@ public class DdServiceImp implements DdService {
         return ResultUtils.ERROR("调整失败");
     }
 
+    @Override
+    public Result<Map<String, Object>> getClockInRecordWithNoProject(ClockQueryDto clockQueryDto) {
+        String dept = clockQueryDto.getDept();
+        String endTime = clockQueryDto.getEndTime();
+        String startTime = clockQueryDto.getStartTime();
+        String title = clockQueryDto.getTitle();
+        String userName = clockQueryDto.getUserName();
+        String type = clockQueryDto.getType();
+        int startPage = clockQueryDto.getStartPage();
+        int size = clockQueryDto.getSize();
+//        int startPage = start -1 <= 0? 0:(start -1)*size;
+        QueryWrapper<ClockIn> clockInQueryWrapper = new QueryWrapper<>();
+        clockInQueryWrapper.like(StringUtils.isNotBlank(dept),"dept",dept);
+        clockInQueryWrapper.like(StringUtils.isNotBlank(userName),"user_name",userName);
+        clockInQueryWrapper.like(StringUtils.isNotBlank(title),"title",title);
+        clockInQueryWrapper.ge(StringUtils.isNotBlank(startTime),"clock_date",startTime);
+        clockInQueryWrapper.le(StringUtils.isNotBlank(endTime),"clock_date",endTime);
+        clockInQueryWrapper.eq(StringUtils.isNotBlank(type),"type",type);
+        clockInQueryWrapper.eq("project","非项目");
+//        clockInQueryWrapper.groupBy("user_name");
+        clockInQueryWrapper.groupBy("user_name","clock_date").select("user_name","clock_date");
+        clockInQueryWrapper.orderByAsc("clock_in_time");
+        clockInQueryWrapper.orderByDesc("knock_off_time");
+        try {
+            Page<ClockIn> clockInPage = new Page<>(startPage, size);
+            IPage<ClockIn> clockInIPage = clockInMapper.selectByCallInConditionWithNoProject(clockInPage, clockInQueryWrapper);
+//            Page<ClockIn> clockInIPage = clockInMapper.selectByCallInConditionWithNoProject(clockInPage, clockInQueryWrapper);
+            List<ClockIn> records = clockInIPage.getRecords();
+            long total = clockInIPage.getTotal();
+//            List<ClockIn> records = clockInMapper.selectByCallInConditionWithNoProject(dept, userName, title, startTime, endTime, type, startPage, size);
+//            long total = clockInMapper.selectByCallInConditionWithNoProjectCount(dept, userName, title, startTime, endTime, type);
+            Map<String,Object> map = new HashMap<>();
+            map.put("data",records);
+            map.put("total",total);
+            return ResultUtils.SUCCESS_DATA(map);
+        }
+        catch (Exception e){
+            log.error("报表查询异常，本次异常代码为:{}",e.getMessage());
+            throw new MyException(e.getMessage());
+        }
+    }
+
+    @Override
+    public void exportWithNoProject(ClockQueryDto clockQueryDto, HttpServletResponse response) throws IOException {
+        String fileName = URLEncoder.encode("测试", "UTF-8").replaceAll("\\+", "%20");
+        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        response.setCharacterEncoding("utf-8");
+        response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + fileName + ".xlsx" );
+        EasyExcel.write(response.getOutputStream(), ExcelEntity.class)
+                .sheet("打卡记录").doWrite(getCallInRecordWithNoProject(clockQueryDto));
+    }
+
+    /***
+     * 获取非项目打卡信息
+     */
+    private List<ExcelEntity> getCallInRecordWithNoProject(ClockQueryDto clockQueryDto){
+        String dept = clockQueryDto.getDept();
+        String endTime = clockQueryDto.getEndTime();
+        String startTime = clockQueryDto.getStartTime();
+        String title = clockQueryDto.getTitle();
+        String userName = clockQueryDto.getUserName();
+        String type = clockQueryDto.getType();
+        QueryWrapper<ClockIn> clockInQueryWrapper = new QueryWrapper<>();
+        clockInQueryWrapper.like(StringUtils.isNotBlank(dept),"dept",dept);
+        clockInQueryWrapper.like(StringUtils.isNotBlank(userName),"user_name",userName);
+        clockInQueryWrapper.like(StringUtils.isNotBlank(title),"title",title);
+        clockInQueryWrapper.ge(StringUtils.isNotBlank(startTime),"clock_date",startTime);
+        clockInQueryWrapper.le(StringUtils.isNotBlank(endTime),"clock_date",endTime);
+        clockInQueryWrapper.eq(StringUtils.isNotBlank(type),"type",type);
+        clockInQueryWrapper.eq("project","非项目");
+//        clockInQueryWrapper.groupBy("user_name");
+        clockInQueryWrapper.groupBy("user_name","clock_date").select("user_name","clock_date");
+        clockInQueryWrapper.orderByAsc("clock_in_time");
+        clockInQueryWrapper.orderByDesc("knock_off_time");
+        List<ExcelEntity> excelParamList = Lists.newArrayList();
+        try{
+            List<ClockIn> clockIns = clockInMapper.exportByCallInCondition(clockInQueryWrapper);
+//            List<ClockIn> clockIns = clockInMapper.selectList(clockInQueryWrapper);
+            if (!CollectionUtils.isEmpty(clockIns)) {
+                clockIns.forEach(item ->{
+                    ExcelEntity excelEntity = new ExcelEntity();
+                    excelEntity.setClockDate(String.valueOf(item.getClockDate()));
+                    excelEntity.setDept(item.getDept());
+                    excelEntity.setLocation(item.getLocation());
+                    excelEntity.setNote(item.getNote());
+                    excelEntity.setProject(item.getProject());
+                    excelEntity.setTitle(item.getTitle());
+                    excelEntity.setType(item.getCallInType());
+                    excelEntity.setJobNumber(item.getJobNumber());
+                    excelEntity.setClockInTime(item.getClockInTime());
+                    excelEntity.setUserName(item.getUserName());
+                    excelEntity.setKnockOffTime(item.getKnockOffTime());
+                    excelEntity.setOverTime(item.getOverTime());
+                    excelEntity.setOverTimeEnd(item.getOverTimeEnd());
+                    excelEntity.setFieldLocation(item.getFieldLocation());
+                    excelEntity.setFieldKnockLocation(item.getFieldKnockLocation());
+                    excelEntity.setWorkTimeResult(item.getWorkTimeResult());
+                    excelEntity.setOverTimeResult(item.getOverTimeResult());
+                    excelEntity.setLateSituation(item.getLateSituation());
+                    excelEntity.setEarlySituation(item.getEarlySituation());
+                    excelParamList.add(excelEntity);
+                });
+            }
+            return excelParamList;
+        }
+        catch (Exception e){
+            log.error("数据查询异常,{}",e.getMessage());
+            throw new MyException(e.getMessage());
+        }
+    }
+
+
+    /***
+     * 获取项目打卡信息
+     * @param clockQueryDto
+     * @return
+     */
     private List<ExcelEntity> getCallInRecordByCondition(ClockQueryDto clockQueryDto){
         String dept = clockQueryDto.getDept();
         String endTime = clockQueryDto.getEndTime();
@@ -243,6 +362,7 @@ public class DdServiceImp implements DdService {
         clockInQueryWrapper.ge(StringUtils.isNotBlank(startTime),"clock_date",startTime);
         clockInQueryWrapper.le(StringUtils.isNotBlank(endTime),"clock_date",endTime);
         clockInQueryWrapper.eq(StringUtils.isNotBlank(type),"type",type);
+        clockInQueryWrapper.notIn("project","非项目");
         clockInQueryWrapper.orderByDesc("clock_in_time");
         List<ExcelEntity> excelParamList = Lists.newArrayList();
         try{
@@ -266,6 +386,8 @@ public class DdServiceImp implements DdService {
                     excelEntity.setOverTimeEnd(item.getOverTimeEnd());
                     excelEntity.setFieldLocation(item.getFieldLocation());
                     excelEntity.setFieldKnockLocation(item.getFieldKnockLocation());
+                    excelEntity.setWorkTimeResult(item.getWorkTimeResult());
+                    excelEntity.setOverTimeResult(item.getOverTimeResult());
                     excelParamList.add(excelEntity);
                 });
             }
@@ -287,7 +409,11 @@ public class DdServiceImp implements DdService {
         if (longitude < 0 || latitude < 0){
             return false;
         }
-        double distance = redisUtils.getDistance(longitude, latitude,userId);
-        return !(distance > RedisConstant.LIMIT_DISTANCE);
+//        double distance = redisUtils.getDistance(longitude, latitude,userId);
+//        double aBaoDistance = redisUtils.getABaoDistance(longitude, latitude,userId);
+//        return !(distance > RedisConstant.LIMIT_DISTANCE || aBaoDistance >RedisConstant.LIMIT_DISTANCE);
+//        return !(distance > RedisConstant.LIMIT_DISTANCE) && !(aBaoDistance > RedisConstant.LIMIT_DISTANCE);
+//        if (distance > RedisConstant.LIMIT_DISTANCE )
+        return redisUtils.getLocationGeoRadius(longitude,latitude,userId);
     }
 }

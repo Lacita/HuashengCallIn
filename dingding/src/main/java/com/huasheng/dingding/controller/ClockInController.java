@@ -69,11 +69,29 @@ public class ClockInController {
         return ddService.getClockInRecord(clockQueryDto);
     }
 
+    @ApiOperation(value = "获取非项目打卡记录")
+    @RequestMapping(value = "/getClockInRecordWithNoProject",method = RequestMethod.POST)
+    public Result<Map<String,Object>> getClockInRecordWithNoProject(@RequestBody ClockQueryDto clockQueryDto){
+        return ddService.getClockInRecordWithNoProject(clockQueryDto);
+    }
+
     @ApiOperation(value = "导出记录")
     @RequestMapping(value = "/export",method = RequestMethod.POST)
     public void exportCallInRecord (@RequestBody ClockQueryDto clockQueryDto, HttpServletResponse response){
         try {
             ddService.exportCallInRecord(clockQueryDto,response);
+        }
+        catch (Exception e){
+            log.error("导出异常，异常代码为:{}",e.getMessage());
+            throw new MyException(e.getMessage());
+        }
+    }
+
+    @ApiOperation(value = "导出非项目打卡记录")
+    @RequestMapping(value = "/exportWithNoProject",method = RequestMethod.POST)
+    public void exportWithNoProject (@RequestBody ClockQueryDto clockQueryDto, HttpServletResponse response){
+        try {
+            ddService.exportWithNoProject(clockQueryDto,response);
         }
         catch (Exception e){
             log.error("导出异常，异常代码为:{}",e.getMessage());
@@ -89,6 +107,7 @@ public class ClockInController {
                                                   @PathVariable("size") Integer size){
         return ddService.showProject(projectId,projectName,page,size);
     }
+
 
     @ApiOperation(value = "添加打卡项目")
     @RequestMapping(value = "/addNewProject",method = RequestMethod.POST)

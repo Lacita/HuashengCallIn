@@ -14,10 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
-@RestController
-@RequestMapping("/test")
+//@RestController
+//@RequestMapping("/test")
 public class TestController {
 
     @Resource
@@ -64,6 +67,26 @@ public class TestController {
         else {
             System.out.println("false");
         }
+    }
+
+    @GetMapping("/3")
+    public void test3() throws ParseException {
+        long nd = 1000 * 24 * 60 * 60;
+        long nh = 1000 * 60 * 60;
+        long nm = 1000 * 60;
+        long ns = 1000;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date parse = simpleDateFormat.parse("2023-05-18 10:11:10");
+        Date parse1 = simpleDateFormat.parse("2023-05-18 12:31:20");
+        long l = parse1.getTime() - parse.getTime();
+//        long minutes = l/(60*1000)%60;
+//        long second = l/1000%60;
+        long hour = l % nd / nh;
+        long minutes = l % nd % nh / nm;
+        long second = l % nd % nh % nm / ns;
+        System.out.println(l);
+        System.out.println(minutes);
+        System.out.println("时间差为:"+hour+"时"+minutes+"分"+second+"秒");
     }
 
 }

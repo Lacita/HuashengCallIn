@@ -10,7 +10,6 @@ import com.huasheng.dingding.domain.entity.ClockIn;
 import com.huasheng.dingding.mapper.ClockInMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -54,7 +53,9 @@ public class OverTimeOperate implements CallInStrategy{
         }
         // 判断是否已经存在加班上班的打卡记录，有则为打下班卡
         if (clockIn != null && StringUtils.isNotBlank(clockIn.getOverTime()) && StringUtils.isBlank(clockIn.getOverTimeEnd())) {
-            UpdateWrapper<ClockIn> clockInUpdateWrapper = new UpdateWrapper<ClockIn>().set("over_time_end", DateUtils.getStringDate())
+            UpdateWrapper<ClockIn> clockInUpdateWrapper = new UpdateWrapper<ClockIn>()
+                    .set("over_time_end", DateUtils.getStringDate())
+                    .set("over_time_result",DateUtils.getDiffTime(clockIn.getClockInTime(),DateUtils.getStringDate()))
                     .eq("id", clockIn.getId());
             int update = clockInMapper.update(null, clockInUpdateWrapper);
             if (update > 0){

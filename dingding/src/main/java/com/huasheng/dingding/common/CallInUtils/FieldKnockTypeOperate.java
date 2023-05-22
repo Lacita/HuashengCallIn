@@ -35,7 +35,9 @@ public class FieldKnockTypeOperate implements CallInStrategy{
                 .eq("id",checkClockRecord.getId())
                 .set("field_knock_location",location)
                 .set("note",checkClockRecord.getNote())
-                .set("knock_off_time", DateUtils.getStringDate());
+                .set("knock_off_time", DateUtils.getStringDate())
+                .set("work_time_result",DateUtils.getDiffTime(checkClockRecord.getClockInTime(),DateUtils.getStringDate()));
+
         int update = clockInMapper.update(null, clockInUpdateWrapper);
         if (update > 0){
             return ResultUtils.SUCCESS();

@@ -75,5 +75,15 @@ public class ResultUtils {
         return new Result<T>(CodeEnum.INTERNET_FAIL.code,CodeEnum.INTERNET_FAIL.message,data);
     }
 
+    /***
+     * 没有访问权限
+     * @param data
+     * @param <T>
+     * @return
+     */
+    public static <T> Result<T> NO_ACCESS_DATA(T data){
+        return new Result<T>(CodeEnum.NO_ACCESS.code,CodeEnum.NO_ACCESS.message,data);
+    }
+
 
 }

@@ -45,5 +45,9 @@ public class ClockIn implements Serializable {
   private String knockOffTime;
   private String fieldLocation;
   private String fieldKnockLocation;
+  private String workTimeResult;
+  private String overTimeResult;
+  private String lateSituation;
+  private String earlySituation;
 
 }

@@ -21,6 +21,10 @@
         <result property="overTimeEnd" column="over_time_end"></result>
         <result property="fieldLocation" column="field_location"></result>
         <result property="fieldKnockLocation" column="field_knock_location"></result>
+        <result property="work_time_result" column="workTimeResult"></result>
+        <result property="over_time_result" column="overTimeResult"></result>
+        <result property="late_situation" column="lateSituation"></result>
+        <result property="early_situation" column="earlySituation"></result>
     </resultMap>
 
     <sql id="BASE">
@@ -31,7 +35,22 @@
         DATE_FORMAT(knock_off_time,'%Y-%m-%d %H:%i:%s') as knock_off_time,
         DATE_FORMAT(over_time,'%Y-%m-%d %H:%i:%s') as over_time,
         DATE_FORMAT(over_time_end,'%Y-%m-%d %H:%i:%s') as over_time_end,
-        field_location,field_knock_location
+        field_location,field_knock_location,
+        work_time_result,over_time_result,
+        late_situation,early_situation
+    </sql>
+
+    <sql id="BASE_PROJECT">
+        a.id,user_name,clock_date,dept,title,job_number,
+        location,
+        DATE_FORMAT(clock_in_time,'%Y-%m-%d %H:%i:%s') as clock_in_time,
+        project,note,`name`,
+        DATE_FORMAT(knock_off_time,'%Y-%m-%d %H:%i:%s') as knock_off_time,
+        DATE_FORMAT(over_time,'%Y-%m-%d %H:%i:%s') as over_time,
+        DATE_FORMAT(over_time_end,'%Y-%m-%d %H:%i:%s') as over_time_end,
+        field_location,field_knock_location,
+        work_time_result,over_time_result,
+        late_situation,early_situation
     </sql>
 
     <select id="selectByCallInCondition" resultMap="callInRecord">
@@ -53,6 +72,83 @@
         on a.type = b.id
         ${ew.customSqlSegment}
     </select>
+
+    <select id="selectByCallInConditionWithNoProject" resultMap="callInRecord">
+        select
+        <include refid="BASE"></include>
+        from clock_in a
+        inner join
+        call_in_type b
+        on a.type = b.id
+        ${ew.customSqlSegment}
+    </select>
+
+<!--    <select id="selectByCallInConditionWithNoProject" resultMap="callInRecord">-->
+<!--        select-->
+<!--        <include refid="BASE"></include>-->
+<!--        from clock_in a-->
+<!--        inner join-->
+<!--        call_in_type b-->
+<!--        on a.type = b.id-->
+<!--        where-->
+<!--        1=1-->
+<!--        and  project = '非项目'-->
+<!--        <if test="dept !=null and dept != '' ">-->
+<!--            and dept = #{dept}-->
+<!--        </if>-->
+<!--        <if test="userName != null and userName != ''">-->
+<!--            and user_name = #{userName}-->
+<!--        </if>-->
+<!--        <if test="title !=null and title != ''">-->
+<!--            and title = #{title}-->
+<!--        </if>-->
+<!--        <if test="startTime != null and startTime != ''">-->
+<!--            and clock_date <![CDATA[ >= ]]> #{startTime}-->
+<!--        </if>-->
+<!--        <if test="endTime != null and endTime != ''">-->
+<!--            and clock_date <![CDATA[ <= ]]> #{endTime}-->
+<!--        </if>-->
+<!--        <if test="type != null and type != '' ">-->
+<!--            and type  = #{type}-->
+<!--        </if>-->
+<!--        group by user_name,clock_date-->
+<!--        ORDER BY clock_in_time ASC , knock_off_time DESC-->
+<!--        limit #{startPage}, #{size}-->
+<!--    </select>-->
+
+<!--    <select id="selectByCallInConditionWithNoProjectCount" resultType="long">-->
+<!--        select-->
+<!--        count(*)-->
+<!--        from clock_in a-->
+<!--        inner join-->
+<!--        call_in_type b-->
+<!--        on a.type = b.id-->
+<!--        where-->
+<!--        1=1-->
+<!--        and  project = '非项目'-->
+<!--        <if test="dept !=null and dept != '' ">-->
+<!--            and dept = #{dept}-->
+<!--        </if>-->
+<!--        <if test="userName != null and userName != ''">-->
+<!--            and user_name = #{userName}-->
+<!--        </if>-->
+<!--        <if test="title !=null and title != ''">-->
+<!--            and title = #{title}-->
+<!--        </if>-->
+<!--        <if test="startTime != null and startTime != ''">-->
+<!--            and clock_date <![CDATA[ >= ]]> #{startTime}-->
+<!--        </if>-->
+<!--        <if test="endTime != null and endTime != ''">-->
+<!--            and clock_date <![CDATA[ <= ]]> #{endTime}-->
+<!--        </if>-->
+<!--        <if test="type != null and type != '' ">-->
+<!--            and type  = #{type}-->
+<!--        </if>-->
+<!--        group by user_name,clock_date-->
+<!--        ORDER BY clock_in_time ASC , knock_off_time DESC-->
+<!--    </select>-->
+
+
 
 
 </mapper>

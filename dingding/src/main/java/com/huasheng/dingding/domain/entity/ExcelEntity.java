@@ -40,6 +40,13 @@ public class ExcelEntity {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ColumnWidth(20)
     private String knockOffTime;
+    @ExcelProperty({"打卡时间","异常考勤","迟到"})
+    private String lateSituation;
+    @ExcelProperty({"打卡时间","异常考勤","早退"})
+    private String earlySituation;
+    @ExcelProperty({"打卡时间","上班时长"})
+    @ColumnWidth(20)
+    private String workTimeResult;
     @ExcelProperty({"加班时间","加班开始时间"})
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ColumnWidth(20)
@@ -48,6 +55,10 @@ public class ExcelEntity {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ColumnWidth(20)
     private String overTimeEnd;
+    @ExcelProperty({"加班时间","加班时长"})
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @ColumnWidth(20)
+    private String overTimeResult;
     @ExcelProperty("打卡类型")
     private String type;
     @ExcelProperty("打卡项目")

@@ -30,9 +30,10 @@ public class FieldTypeOperate implements CallInStrategy{
 
     @Override
     public Result<String> callInStrategy(String userName, String userId, String type, String location, String project, String note) {
-        if (!project.equals("外勤")) {
-            return ResultUtils.ERROR("打卡项目请选外勤打卡");
-        }
+
+        //        if (!project.equals("外勤")) {
+//            return ResultUtils.ERROR("打卡项目请选外勤打卡");
+//        }
         QueryWrapper<ClockIn> last = new QueryWrapper<ClockIn>().eq("user_name", userName)
                 .eq("clock_date", DateUtils.getStringDateShort())
                 .eq("type",3)

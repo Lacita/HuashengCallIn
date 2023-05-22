@@ -9,18 +9,15 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+
   shardingsphere:
     datasource:
-      props:
-        sql:
-          show: true
-      names: dddaka
-      dddaka:
-        type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://127.0.0.1/dddaka?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true&allowMultiQueries=true
+      ds:
         driver-class-name: com.mysql.jdbc.Driver
-        username: root
+        url: jdbc:mysql://127.0.0.1:3306/dddaka?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
         password: 123456
+        type: com.alibaba.druid.pool.DruidDataSource
+        username: root
         initialSize: 10
         minIdle: 2
         maxActive: 20
@@ -28,17 +25,55 @@ spring:
         timeBetweenEvictionRunsMillis: 60000
         minEvictableIdleTimeMillis: 300000
         validationQuery: SELECT 1 FROM DUAL
-    sharding:
-      tables:
-        clock_in:
-          actual-data-nodes: dddaka.clock_in$->{0..2}
-          key-generator:
-            type: SNOWFLAKE
-            column: id
-          table-strategy:
-            inline:
-              sharding-column: id
-              algorithm-expression: dddaka.clock_in$->{id % 3}
+      names: ds
+    rules:
+      sharding:
+        sharding-algorithms:
+          custom-table-inline:
+            props:
+              algorithm-expression: clock_in$->{id % 3}
+            type: INLINE
+        tables:
+          clock_in:
+            actual-data-nodes: ds.clock_in$->{0..2}
+            table-strategy:
+              standard:
+                sharding-algorithm-name: custom-table-inline
+                sharding-column: id
+
+  #  shardingsphere:
+#    datasource:
+#      props:
+#        sql:
+#          show: true
+#      names: dddaka
+#      dddaka:
+#        type: com.alibaba.druid.pool.DruidDataSource
+#        url: jdbc:mysql://127.0.0.1/dddaka?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true&allowMultiQueries=true
+#        driver-class-name: com.mysql.jdbc.Driver
+#        username: root
+#        password: 123456
+#        initialSize: 10
+#        minIdle: 2
+#        maxActive: 20
+#        maxWait: 60000
+#        timeBetweenEvictionRunsMillis: 60000
+#        minEvictableIdleTimeMillis: 300000
+#        validationQuery: SELECT 1 FROM DUAL
+#    sharding:
+#      tables:
+#        clock_in:
+#          actual-data-nodes: dddaka.clock_in$->{0..2}
+#          key-generator:
+#            type: SNOWFLAKE
+#            column: id
+#          table-strategy:
+#            inline:
+#              sharding-column: id
+#              algorithm-expression: dddaka.clock_in$->{id % 3}
+
+  #------------------------
+
 #  datasource:
 #    driver-class-name: com.mysql.jdbc.Driver
 #    username: root

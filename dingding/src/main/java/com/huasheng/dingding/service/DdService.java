@@ -6,6 +6,7 @@ import com.huasheng.dingding.domain.dto.ClockQueryDto;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 public interface DdService {
@@ -26,4 +27,7 @@ public interface DdService {
 
     Result<String> updateProject(Long id);
 
+    Result<Map<String, Object>> getClockInRecordWithNoProject(ClockQueryDto clockQueryDto);
+
+    void exportWithNoProject(ClockQueryDto clockQueryDto, HttpServletResponse response) throws IOException;
 }

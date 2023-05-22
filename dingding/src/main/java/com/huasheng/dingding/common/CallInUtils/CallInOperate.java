@@ -27,8 +27,6 @@ public class CallInOperate implements CallInStrategy{
     private DingTalkUtils dingTalkUtils;
 
 
-
-
     @Override
     public Result<String> callInStrategy(String userName, String userId, String type, String location, String project, String note) {
         QueryWrapper<ClockIn> last = new QueryWrapper<ClockIn>()
@@ -40,6 +38,9 @@ public class CallInOperate implements CallInStrategy{
         ClockIn clock = clockInMapper.selectOne(last);
         if (clock != null && StringUtils.isBlank(clock.getKnockOffTime())) {
             return ResultUtils.ERROR("项目："+clock.getProject()+"未下班");
+        }
+        if (clock != null && clock.getProject().equals("非项目")) {
+            return ResultUtils.ERROR("非项目上班卡已打，无需重复操作");
         }
         // 判断accessKey是否过期，并赋值使用
         String accessKey = dingTalkUtils.accessKeyExpire();
@@ -62,12 +63,14 @@ public class CallInOperate implements CallInStrategy{
             clockIn.setProject(project);
             clockIn.setTitle(title);
             clockIn.setClockInTime(DateUtils.getStringDate());
+            // 非项目迟到则执行
+            if (DateUtils.isLate() && project.equals("非项目")) {
+                clockIn.setLateSituation(DateUtils.calcLateTime());
+            }
             int insert = clockInMapper.insert(clockIn);
             if (insert > 0) {
                 return ResultUtils.SUCCESS();
             }
             return ResultUtils.ERROR("打卡失败");
     }
-
-
 }

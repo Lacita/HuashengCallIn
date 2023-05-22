@@ -33,10 +33,15 @@ public class KnockOffOperate implements CallInStrategy{
         if (checkClockRecord == null || StringUtils.isNotBlank(checkClockRecord.getKnockOffTime())) {
             return ResultUtils.ERROR("请先对该项目打卡上班");
         }
-        UpdateWrapper<ClockIn> set = new UpdateWrapper<ClockIn>().eq("id", checkClockRecord.getId())
+        UpdateWrapper<ClockIn> updateWrapper = new UpdateWrapper<ClockIn>().eq("id", checkClockRecord.getId())
                 .set("note",checkClockRecord.getNote())
-                .set("knock_off_time", DateUtils.getStringDate());
-        int update = clockInMapper.update(null, set);
+                .set("knock_off_time", DateUtils.getStringDate())
+                .set("work_time_result",DateUtils.getDiffTime(checkClockRecord.getClockInTime(),DateUtils.getStringDate()));
+        // 非项目早退情况则执行
+        if (DateUtils.isEarly() && checkClockRecord.getProject().equals("非项目")){
+            updateWrapper.set("early_situation",DateUtils.calcEarlyTime());
+        }
+        int update = clockInMapper.update(null, updateWrapper);
         if (update >0) {
             return ResultUtils.SUCCESS();
         }

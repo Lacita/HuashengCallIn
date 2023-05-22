@@ -20,4 +20,10 @@ public interface ClockInMapper extends BaseMapper<ClockIn> {
 
     List<ClockIn> exportByCallInCondition(@Param(Constants.WRAPPER) Wrapper<ClockIn> queryWrapper);
 
+    Page<ClockIn> selectByCallInConditionWithNoProject(IPage<ClockIn> page, @Param(Constants.WRAPPER) Wrapper<ClockIn> queryWrapper);
+
+    List<ClockIn> selectByCallInConditionWithNoProject(String dept,String userName,String title,String startTime,String endTime,String type, int startPage,int size );
+
+    long selectByCallInConditionWithNoProjectCount(String dept,String userName,String title,String startTime,String endTime,String type);
+
 }
