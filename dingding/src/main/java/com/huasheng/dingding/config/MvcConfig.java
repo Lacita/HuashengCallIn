@@ -14,7 +14,8 @@ public class MvcConfig implements WebMvcConfigurer {
     public static final List<String>  withList = Arrays.asList("/hs/clockIn",
             "/hs/export","/hs/login","/doc.html/**",
             "/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**",
-            "/api", "/api-docs", "/api-docs/**","/hs/getUserInfo"
+            "/api", "/api-docs", "/api-docs/**","/hs/getUserInfo","/v3/api-docs",
+            "/api/query","/test/**"
             );
 
     @Override

@@ -2,7 +2,6 @@ package com.huasheng.dingding.config;
 
 import com.alibaba.fastjson.JSON;
 import com.huasheng.dingding.common.Result.ResultUtils;
-import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,10 +16,6 @@ public class LoginInterceptor implements HandlerInterceptor {
         String method = request.getMethod();
         if ("OPTIONS".equals(method)) {
             return true;
-        }
-        HandlerMethod handlerMethod=(HandlerMethod)handler;
-        if(handlerMethod.getBean().getClass().getName().equals("springfox.documentation.swagger.web.ApiResourceController")){
-            return  true;
         }
         String token = request.getHeader("token");
         if (token == null || "".equals(token)) {

@@ -24,6 +24,7 @@ import com.huasheng.dingding.mapper.ClockInMapper;
 import com.huasheng.dingding.mapper.ClockInProjectMapper;
 import com.huasheng.dingding.mapper.DdMapper;
 import com.huasheng.dingding.service.DdService;
+import com.huasheng.dingding.utils.PasswordUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.utils.Lists;
 import org.apache.commons.lang3.StringUtils;
@@ -74,7 +75,8 @@ public class DdServiceImp implements DdService {
     public Result<String> login(String userName, String password) {
         QueryWrapper<LoginUser> loginUserQueryWrapper = new QueryWrapper<>();
         loginUserQueryWrapper.eq("user_name",userName);
-        loginUserQueryWrapper.eq("password",password);
+        String desEncrypt = PasswordUtil.desEncrypt(password);
+        loginUserQueryWrapper.eq("password",desEncrypt);
         LoginUser loginUser = ddMapper.selectOne(loginUserQueryWrapper);
         if (loginUser == null) {
             return ResultUtils.ERROR("账号密码错误");
@@ -102,9 +104,16 @@ public class DdServiceImp implements DdService {
             return ResultUtils.ERROR("请15秒后尝试");
         }
         // 判断打卡类型
-        String beanType = RedisConstant.TYPE.get(type);
-        CallInStrategy bean = applicationContext.getBean(beanType, CallInStrategy.class);
-        return bean.callInStrategy(userName,userId,type,location,project,note);
+        try{
+            String beanType = RedisConstant.TYPE.get(type);
+            // 上下文获取bean
+            CallInStrategy bean = applicationContext.getBean(beanType, CallInStrategy.class);
+            return bean.callInStrategy(userName,userId,type,location,project,note);
+        }catch (Exception e){
+            throw new MyException("无对应类型");
+        }
+
+
     }
 
     @Override
