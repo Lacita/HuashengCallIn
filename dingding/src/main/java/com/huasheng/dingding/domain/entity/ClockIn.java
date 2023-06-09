@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @Data
 @TableName(value = "clock_in")
 public class ClockIn implements Serializable {
-  @TableId(type = IdType.ID_WORKER)
+  @TableId(type = IdType.AUTO)
   private Long id;
   private String userName;
 //  @JsonFormat(pattern = "yyyy-MM-dd")

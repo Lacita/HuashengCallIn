@@ -8,6 +8,7 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/../../java-utils/apache-maven-3.6.3/maven_resp/ch/qos/logback/logback-classic/1.2.12/logback-classic-1.2.12-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../dingtalk-sdk-java/taobao-sdk-java-auto_1479188381469-20230518-source.jar!/" />
     </SOURCES>
   </library>
 </component>

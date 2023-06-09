@@ -104,7 +104,8 @@ mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   global-config:
     db-config:
-      id-type: auto
+      id-type: ID_WORKER
+
       field-strategy: NOT_EMPTY
       #
       db-type: MYSQL
@@ -112,6 +113,6 @@ mybatis-plus:
     #
     map-underscore-to-camel-case: true
     call-setters-on-nulls: true
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 

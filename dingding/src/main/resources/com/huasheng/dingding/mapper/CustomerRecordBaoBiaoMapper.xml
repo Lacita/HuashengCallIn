@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huasheng.dingding.mapper.CustomerRecordBaoBiaoMapper">
+
+    <resultMap id="researchMap" type="com.huasheng.dingding.domain.entity.CustomerBaobiao">
+        <id property="id" column="id"></id>
+        <result property="visitSituation" column="visit_situation"></result>
+        <result property="priceSituation" column="price_situation"></result>
+        <result property="payForSituation" column="pay_for_situation"></result>
+        <result property="existingProblem" column="existing_problem"></result>
+        <result property="solution" column="solution"></result>
+        <result property="feedbackUser" column="feedback_user"></result>
+        <result property="customerUpdateTime" column="customer_update_time"></result>
+        <result property="researchSituation" column="research_situation"></result>
+        <result property="researchExistingProblem" column="research_existing_problem"></result>
+        <result property="researchFeedbackUser" column="research_feedback_user"></result>
+        <result property="researchUpdateTime" column="research_update_time"></result>
+        <result property="customerName" column="customer_name"></result>
+        <result property="customerName" column="customer_name"></result>
+    </resultMap>
+
+    <sql id="BASE_BAOBIAO">
+        a.id as `id` ,visit_situation,price_situation,pay_for_situation,existing_problem,solution,
+        feedback_user, DATE_FORMAT(customer_update_time,'%Y-%m-%d %H:%i:%s') as customer_update_time,
+        research_situation,research_existing_problem,research_solution,research_feedback_user,
+        b.customer_name,b.current_status,DATE_FORMAT(research_update_time,'%Y-%m-%d %H:%i:%s') as research_update_time
+    </sql>
+
+    <select id="selectCustomerBaoBiaoVo" resultMap="researchMap">
+        select
+        <include refid="BASE_BAOBIAO"></include>
+        from
+        customer_baobiao a
+        inner join
+        customer_info b
+        on
+        a.customer_id = b.id
+        ${ew.customSqlSegment}
+    </select>
+
+    <select id="exportCustomerBaoBiaoVo" resultMap="researchMap">
+        select
+        <include refid="BASE_BAOBIAO"></include>
+        from
+        customer_baobiao a
+        inner join
+        customer_info b
+        on
+        a.customer_id = b.id
+        ${ew.customSqlSegment}
+    </select>
+
+
+</mapper>

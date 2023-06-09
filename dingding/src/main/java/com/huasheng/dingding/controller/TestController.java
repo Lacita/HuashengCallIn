@@ -104,6 +104,11 @@ public class TestController {
         System.out.println(list);
     }
 
+    @GetMapping("/5")
+    public String test5(){
+        return "hello";
+    }
+
 
 
 }

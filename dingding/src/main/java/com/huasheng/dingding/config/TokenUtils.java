@@ -6,6 +6,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
 public class TokenUtils {
 
@@ -27,6 +28,36 @@ public class TokenUtils {
         claims.put("account", userName);
         token = Jwts.builder()
 
+                //发证人
+                .setIssuer("auth")
+                //Jwt头
+                .setHeader(header)
+                //有效载荷
+                .setClaims(claims)
+                //设定签发时间
+                .setIssuedAt(new Date())
+                //设定过期时间
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRE_TIME))
+                //使用HS256算法签名，PRIVATE_KEY为签名密钥
+                .signWith(SignatureAlgorithm.HS256, PRIVATE_KEY)
+                .compact();
+        return token;
+    }
+
+    /**
+     * code登录生成
+     * @return String
+     */
+    public static String signCodeToken(Map<String,String> map) {
+        String token = null;
+        HashMap<String, Object> header = new HashMap<>();
+        header.put("typ", "JWT");
+        header.put("alg", "HS256");
+        HashMap<String, Object> claims = new HashMap<>();
+        //自定义有效载荷部分
+        claims.put("nick", (String)map.get("nickName"));
+        claims.put("account", (String)map.get("openid"));
+        token = Jwts.builder()
                 //发证人
                 .setIssuer("auth")
                 //Jwt头
@@ -100,7 +131,7 @@ public class TokenUtils {
      */
     public static String getUserTokenID(String token){
         Claims claims = parserToken(token);
-        String account = (String) claims.get("account");
+        String account = (String) claims.get("nick");
         return account;
     }
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huasheng.dingding.mapper.CustomerRecordMapper">
+
+    <resultMap id="researchMap" type="com.huasheng.dingding.domain.entity.CustomerRecord">
+        <id property="id" column="id"></id>
+        <result property="customer_id" column="customerId"></result>
+        <result property="visit_situation" column="visitSituation"></result>
+        <result property="price_situation" column="priceSituation"></result>
+        <result property="pay_for_situation" column="payForSituation"></result>
+        <result property="existing_problem" column="existingProblem"></result>
+        <result property="solution" column="solution"></result>
+        <result property="feedback_user" column="feedbackUser"></result>
+        <result property="update_time" column="updateTime"></result>
+    </resultMap>
+
+    <sql id="BASE_COLUMN">
+        `id`,customer_id,visit_situation,price_situation,pay_for_situation,existing_problem,solution,feedback_user,
+         DATE_FORMAT(update_time,'%Y-%m-%d %H:%i:%s') as update_time
+    </sql>
+
+    <select id="selectCustomerRecord" resultMap="researchMap">
+        select
+        <include refid="BASE_COLUMN"></include>
+        from
+        customer_record
+        ${ew.customSqlSegment}
+    </select>
+
+</mapper>
+

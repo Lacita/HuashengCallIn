@@ -5,50 +5,75 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3820f067-7438-4610-b62d-7051cb12d1bf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_woodstox_woodstox_core_5_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_activation_javax_activation_1_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_messaging_saaj_saaj_impl_1_5_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_yucongming_yucongming_java_sdk_0_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_xml_soap_jakarta_xml_soap_api_1_4_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_soap_javax_xml_soap_api_1_4_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_ws_jaxws_api_2_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_core_3_3_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_bindings_soap_3_3_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_bindings_xml_3_3_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_databinding_jaxb_3_3_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_frontend_jaxws_3_3_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_frontend_simple_3_3_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_transports_http_3_3_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_ws_addr_3_3_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_ws_policy_3_3_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_wsdl_3_3_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_spring_boot_autoconfigure_3_3_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_spring_boot_starter_jaxws_3_3_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_geronimo_specs_geronimo_jta_1_1_spec_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_geronimo_specs_geronimo_ws_metadata_2_0_spec_1_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_neethi_neethi_3_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_ws_xmlschema_xmlschema_core_2_2_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bouncycastle_bcprov_jdk15on_1_60.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_woodstox_stax2_api_3_1_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jacorb_jacorb_omgapi_3_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_spec_javax_rmi_jboss_rmi_api_1_0_spec_1_0_6_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jvnet_staxex_stax_ex_1_8_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__wsdl4j_wsdl4j_1_6_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xml_resolver_xml_resolver_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/controller/YuApiController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/oaService/AttachmentForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/oaService/ClientConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/oaService/KmReviewParamterForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/oaService/WebServiceClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/oaService/WebServiceConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/utils/PasswordUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_9_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_7_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/config/ThreadPoolExecutorConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/controller/CustomerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/controller/DingTalkController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/domain/dto/CustomerInfoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/domain/dto/CustomerRecordDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/domain/dto/DingTalkLoginDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/domain/dto/ResearchRecordDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/domain/entity/CustomerBaobiao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/domain/entity/CustomerExcel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/domain/entity/CustomerInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/domain/entity/CustomerProcess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/domain/entity/CustomerRecord.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/domain/entity/ResearchRecord.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/mapper/CustomerInfoMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/mapper/CustomerRecordBaoBiaoMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/mapper/CustomerRecordMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/mapper/ResearchRecordMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/service/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/service/DingTalkCodeLogin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/service/Imp/CustomerServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/service/Imp/DingTalkCodeLoginService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/resources/com/huasheng/dingding/mapper/CustomerInfoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/resources/com/huasheng/dingding/mapper/CustomerRecordBaoBiaoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/resources/com/huasheng/dingding/mapper/CustomerRecordMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dingding/src/main/resources/com/huasheng/dingding/mapper/ResearchRecordMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7f0d03a6-22e3-4756-a422-1773248ec4f9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7f0d03a6-22e3-4756-a422-1773248ec4f9.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_12.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_12.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_72.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_woodstox_woodstox_core_5_0_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_activation_javax_activation_1_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_messaging_saaj_saaj_impl_1_5_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_xml_soap_jakarta_xml_soap_api_1_4_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_soap_javax_xml_soap_api_1_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_ws_jaxws_api_2_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_core_3_3_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_bindings_soap_3_3_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_bindings_xml_3_3_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_databinding_jaxb_3_3_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_frontend_jaxws_3_3_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_frontend_simple_3_3_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_transports_http_3_3_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_ws_addr_3_3_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_ws_policy_3_3_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_rt_wsdl_3_3_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_spring_boot_autoconfigure_3_3_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_cxf_cxf_spring_boot_starter_jaxws_3_3_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_geronimo_specs_geronimo_jta_1_1_spec_1_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_geronimo_specs_geronimo_ws_metadata_2_0_spec_1_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_neethi_neethi_3_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_ws_xmlschema_xmlschema_core_2_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_woodstox_stax2_api_3_1_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jacorb_jacorb_omgapi_3_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_spec_javax_rmi_jboss_rmi_api_1_0_spec_1_0_6_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jvnet_staxex_stax_ex_1_8_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_7_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_9_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__wsdl4j_wsdl4j_1_6_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xml_resolver_xml_resolver_1_2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dingding/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/config/LoginInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/config/LoginInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/DingdingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/DingdingApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/config/MvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/config/MvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/config/TokenUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/config/TokenUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/controller/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/controller/YuApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/controller/YuApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/domain/entity/ClockIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/domain/entity/ClockIn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/oaService/WebServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/oaService/WebServiceClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/oaService/WebServiceConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/oaService/WebServiceConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/service/Imp/DdServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/service/Imp/DdServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dingding/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/dingding/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +84,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Class" />
+        <option value="FxmlFile" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -106,9 +132,13 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/dingding/src/main/java/com/huasheng/dingding/domain/entity" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="spring" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
@@ -133,7 +163,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.WebServiceClient">
+  <component name="RunManager" selected="Spring Boot.DingdingApplication (1)">
     <configuration name="RedisUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.huasheng.dingding.config.RedisUtils" />
       <module name="dingding" />
@@ -182,8 +212,8 @@
     </configuration>
     <list>
       <item itemvalue="Application.RedisUtils" />
-      <item itemvalue="Spring Boot.DingdingApplication (1)" />
       <item itemvalue="Application.WebServiceClient" />
+      <item itemvalue="Spring Boot.DingdingApplication (1)" />
     </list>
     <recent_temporary>
       <list>
@@ -249,7 +279,23 @@
       <workItem from="1685064804289" duration="4429000" />
       <workItem from="1685193661740" duration="695000" />
       <workItem from="1685339037894" duration="2563000" />
-      <workItem from="1685410413368" duration="8903000" />
+      <workItem from="1685410413368" duration="11019000" />
+      <workItem from="1685499666055" duration="12129000" />
+      <workItem from="1685601849267" duration="8771000" />
+      <workItem from="1685632094818" duration="226000" />
+      <workItem from="1685664099876" duration="686000" />
+      <workItem from="1685769583845" duration="1227000" />
+      <workItem from="1685802716827" duration="3050000" />
+      <workItem from="1685853888055" duration="10449000" />
+      <workItem from="1685865958154" duration="11136000" />
+      <workItem from="1685925315936" duration="11510000" />
+      <workItem from="1686009950946" duration="7051000" />
+      <workItem from="1686100216909" duration="9050000" />
+      <workItem from="1686142876940" duration="2983000" />
+      <workItem from="1686182962175" duration="13424000" />
+      <workItem from="1686230547039" duration="666000" />
+      <workItem from="1686233289289" duration="1261000" />
+      <workItem from="1686273798665" duration="20129000" />
     </task>
     <servers />
   </component>

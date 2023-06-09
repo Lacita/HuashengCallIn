@@ -15,7 +15,7 @@ public class MvcConfig implements WebMvcConfigurer {
             "/hs/export","/hs/login","/doc.html/**",
             "/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**",
             "/api", "/api-docs", "/api-docs/**","/hs/getUserInfo","/v3/api-docs",
-            "/api/query","/test/**"
+            "/api/query","/test/**","/ding-talk/**"
             );
 
     @Override

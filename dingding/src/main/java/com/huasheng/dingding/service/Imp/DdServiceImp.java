@@ -30,9 +30,9 @@ import org.apache.commons.compress.utils.Lists;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -92,7 +92,6 @@ public class DdServiceImp implements DdService {
     @Override
     @Transactional
     public Result<String> clockInMessage(String userName, String userId, String type, String location, String project,String note,double longitude,double latitude) {
-
         // 判断是否处于打卡范围,以及是否是外勤类型
         if (!this.checkIfDistance(longitude,latitude,userId) &&
                 !(type.equals(RedisConstant.FIELD_CALL_IN_TYPE)||type.equals(RedisConstant.FIELD_KNOCK_TYPE)) ) {
@@ -112,8 +111,6 @@ public class DdServiceImp implements DdService {
         }catch (Exception e){
             throw new MyException("无对应类型");
         }
-
-
     }
 
     @Override

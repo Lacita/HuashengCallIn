@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Api(tags = "智能报表分析")
 @ApiSupport(author = "张家杰",order = 2)
-@RestController
-@RequestMapping("/api")
+//@RestController
+//@RequestMapping("/api")
 public class YuApiController {
 
     public static final String accessKey = "gzztm82ebbf14nyro8cqoe9wg5p1pgno";

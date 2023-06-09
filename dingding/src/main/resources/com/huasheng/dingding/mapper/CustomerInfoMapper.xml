@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huasheng.dingding.mapper.CustomerInfoMapper">
+
+    <resultMap id="customInfo" type="com.huasheng.dingding.domain.entity.CustomerInfo">
+        <id property="id" column="id"></id>
+        <result property="customerCode" column="customer_code"></result>
+        <result property="customerName" column="customer_name"></result>
+        <result property="currentStatus" column="current_status"></result>
+        <result property="operateUser" column="operate_user"></result>
+    </resultMap>
+    
+    <sql id="BASE_COLUMN">
+        `id`,customer_code,customer_name,current_status,operate_user
+    </sql>
+
+    <select id="selectCustomByVo" resultMap="customInfo">
+        select
+        <include refid="BASE_COLUMN"></include>
+        from
+        customer_info
+        ${ew.customSqlSegment}
+    </select>
+
+</mapper>
