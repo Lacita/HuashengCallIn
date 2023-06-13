@@ -16,7 +16,7 @@ public class BackUpSchedule {
         try {
             log.info("=======================开始备份数据库=========================");
             // G:\HS-DDDK\HS-DDDK
-            Runtime.getRuntime().exec("cmd /c G:/HS-DDDK/HS-DDDK/backUp.bat"); // 执行备份批处理文件
+            Runtime.getRuntime().exec("cmd /c G:/HS-DDDK/HS-DDDK/backUp.bat.22222222222222"); // 执行备份批处理文件
             log.info("=======================数据库备份成功=========================");
         } catch (IOException e) {
             log.error("数据库备份失败",e);
