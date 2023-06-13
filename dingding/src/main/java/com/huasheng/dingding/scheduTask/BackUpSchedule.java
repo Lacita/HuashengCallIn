@@ -1,6 +1,7 @@
 package com.huasheng.dingding.scheduTask;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import java.io.IOException;
@@ -9,6 +10,7 @@ import java.io.IOException;
 @Slf4j
 public class BackUpSchedule {
 
+    @Async
     @Scheduled(cron = "0 0 4 * * ?")
     public void execute(){
         try {

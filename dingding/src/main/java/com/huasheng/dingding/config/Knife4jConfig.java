@@ -1,5 +1,7 @@
 package com.huasheng.dingding.config;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -12,8 +14,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-@Profile({"dev", "test"})
 public class Knife4jConfig {
+
+    @Value(value = "${swagger.enable}")
+    public boolean enable;
 
     @Bean
     public Docket defaultApi2() {
@@ -27,7 +31,8 @@ public class Knife4jConfig {
                 // 指定 Controller 扫描包路径
                 .apis(RequestHandlerSelectors.basePackage("com.huasheng.dingding.controller"))
                 .paths(PathSelectors.any())
-                .build();
+                .build()
+                .enable(enable);
     }
 
 

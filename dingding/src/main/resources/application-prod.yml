@@ -1,5 +1,5 @@
 server:
-  port: 8090
+  port: 9999
 # DataSource Config
 spring:
   main:
@@ -112,5 +112,6 @@ mybatis-plus:
     call-setters-on-nulls: true
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 swagger:
-  enable: true
+  enable: false
+
 

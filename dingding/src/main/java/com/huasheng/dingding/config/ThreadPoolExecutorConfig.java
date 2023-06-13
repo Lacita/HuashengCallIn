@@ -15,8 +15,6 @@ public class ThreadPoolExecutorConfig {
     public static final int QUEUE_SIZE = 200;
     public static final int KEEP_ALIVE = 60;
 
-
-
     @Bean(name = "taskExecutor")
     public TaskExecutor taskExecutor(){
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();

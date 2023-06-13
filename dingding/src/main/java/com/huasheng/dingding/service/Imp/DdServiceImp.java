@@ -29,6 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.utils.Lists;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationContext;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -61,6 +62,9 @@ public class DdServiceImp implements DdService {
 
     @Resource
     private ClockInProjectMapper clockInProjectMapper;
+
+    @Resource
+    private TaskExecutor taskExecutor;
 
     @Resource
     private RedisTemplate<String,Object> redisTemplate;
@@ -109,7 +113,7 @@ public class DdServiceImp implements DdService {
             CallInStrategy bean = applicationContext.getBean(beanType, CallInStrategy.class);
             return bean.callInStrategy(userName,userId,type,location,project,note);
         }catch (Exception e){
-            throw new MyException("无对应类型");
+            throw new MyException(e.toString());
         }
     }
 
@@ -123,14 +127,14 @@ public class DdServiceImp implements DdService {
         CompletableFuture<Map<String, Object>> getUserInfoTask = CompletableFuture.supplyAsync(() -> {
             Map<String, Object> userinfo = dingTalkUtils.getUserinfo(accessToken, code);
             return userinfo;
-        });
+        },taskExecutor);
         CompletableFuture<List<String>> getCallInProjectTask = CompletableFuture.supplyAsync(() -> {
             QueryWrapper<CallInProject> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("project_status",1);
             List<CallInProject> callInProjects = clockInProjectMapper.selectList(queryWrapper);
             List<String> collect = callInProjects.stream().map(CallInProject::getProjectName).collect(Collectors.toList());
             return collect;
-        });
+        },taskExecutor);
         CompletableFuture.allOf(getUserInfoTask,getCallInProjectTask);
         try {
             Map<String, Object> userInfo = getUserInfoTask.get();

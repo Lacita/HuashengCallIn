@@ -34,6 +34,7 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 @Service
@@ -55,9 +56,6 @@ public class CustomerServiceImp extends ServiceImpl<CustomerInfoMapper,CustomerI
 
     @Resource
     private CustomerRecordBaoBiaoMapper customerRecordBaoBiaoMapper;
-
-    @Resource
-    private TaskExecutor taskExecutor;
 
     @Override
     public Result<CustomerInfo> showCustomerInfo(CustomerInfoDto customerInfoDto) {

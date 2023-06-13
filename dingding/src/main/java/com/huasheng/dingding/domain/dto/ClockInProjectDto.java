@@ -11,10 +11,10 @@ import java.io.Serializable;
 @ApiModel(value = "打卡项目查询")
 public class ClockInProjectDto implements Serializable {
 
-    @ApiModelProperty(value = "打卡项目名称")
+    @ApiModelProperty(value = "打卡项目名称",required = true)
     private String projectName;
-    @ApiModelProperty(value = "打卡项目编号")
+    @ApiModelProperty(value = "打卡项目编号",required = true)
     private String projectId;
-    @ApiModelProperty(value = "打卡项目状态")
+    @ApiModelProperty(value = "打卡项目状态",required = true)
     private Integer projectStatus;
 }

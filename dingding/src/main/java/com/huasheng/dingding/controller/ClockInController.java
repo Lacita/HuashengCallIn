@@ -1,6 +1,4 @@
 package com.huasheng.dingding.controller;
-
-import cn.hutool.http.server.HttpServerResponse;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.huasheng.dingding.Exception.MyException;
 import com.huasheng.dingding.common.Result.Result;
@@ -100,6 +98,12 @@ public class ClockInController {
     }
 
     @ApiOperation(value = "分页展示打卡项目")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "projectName",value = "项目名称"),
+            @ApiImplicitParam(name = "projectId",value = "项目ID"),
+            @ApiImplicitParam(name = "page",value = "页码",required = true),
+            @ApiImplicitParam(name = "size",value = "页码尺寸",required = true)
+    })
     @RequestMapping(value = "/showProject&projectId={projectId}&projectName={projectName}&page={page}&size={size}",method = RequestMethod.GET)
     public Result<Map<String,Object>> showProject(@PathVariable("projectName") String projectName,
                                                   @PathVariable("projectId") String projectId,
@@ -110,6 +114,10 @@ public class ClockInController {
 
 
     @ApiOperation(value = "添加打卡项目")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "projectName",value = "项目名称",required = true),
+            @ApiImplicitParam(name = "projectId",value = "项目编号",required = true)
+    })
     @RequestMapping(value = "/addNewProject",method = RequestMethod.POST)
     public Result<String> addNewProject(@RequestParam("projectName") String projectName,
                                         @RequestParam("projectId") String projectId){

@@ -13,11 +13,11 @@ import java.io.Serializable;
 public class LoginUser implements Serializable {
     @ApiModelProperty(value = "用户ID")
     private String id;
-    @ApiModelProperty(value = "登录账户")
+    @ApiModelProperty(value = "登录账户",required = true)
     private String userName;
-    @ApiModelProperty(value = "登录密码")
+    @ApiModelProperty(value = "登录密码",required = true)
     private String password;
-    @ApiModelProperty(value = "用户状态")
+    @ApiModelProperty(value = "用户状态",required = true)
     private int status;
     @ApiModelProperty(value = "用户备注")
     private String note;

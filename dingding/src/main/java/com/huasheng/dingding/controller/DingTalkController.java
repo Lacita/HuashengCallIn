@@ -11,6 +11,7 @@ import com.dingtalk.api.response.OapiGettokenResponse;
 import com.dingtalk.api.response.OapiSnsGetuserinfoBycodeResponse;
 import com.dingtalk.api.response.OapiUserGetbyunionidResponse;
 import com.dingtalk.api.response.OapiV2UserGetResponse;
+import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.google.gson.Gson;
 import com.huasheng.dingding.Exception.MyException;
 import com.huasheng.dingding.common.Result.Result;
@@ -19,6 +20,9 @@ import com.huasheng.dingding.config.TokenUtils;
 import com.huasheng.dingding.domain.dto.DingTalkLoginDto;
 import com.huasheng.dingding.service.DingTalkCodeLogin;
 import com.taobao.api.ApiException;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +34,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+@Api(tags = "钉钉扫码登录接口")
+@ApiSupport(author = "张家杰",order = 3)
 @RestController
 @Slf4j
 @RequestMapping("/ding-talk")
@@ -44,7 +50,9 @@ public class DingTalkController {
     @Resource
     private DingTalkCodeLogin dingTalkCodeLogin;
 
+    @ApiOperation(value = "登录获取用户相关信息")
     @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @ApiImplicitParam(name = "code",value = "获取临时验证码",required = true)
     public Result<String> login(@RequestParam("code") String code) {
         try {
             DefaultDingTalkClient  client = new DefaultDingTalkClient("https://oapi.dingtalk.com/sns/getuserinfo_bycode");
@@ -87,6 +95,7 @@ public class DingTalkController {
         }
     }
 
+    @ApiOperation(value = "获取用户Token")
     @RequestMapping(value = "/getJwtToken",method = RequestMethod.POST)
     public Result<String> getJwtToken(HttpServletRequest request){
         String token = request.getHeader("token");

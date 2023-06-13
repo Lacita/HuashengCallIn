@@ -23,8 +23,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@RestController
-@RequestMapping("/test")
+//@RestController
+//@RequestMapping("/test")
 public class TestController {
 
     @Resource
