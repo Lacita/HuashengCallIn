@@ -22,6 +22,7 @@ public class CustomerRecordDto {
     @ApiModelProperty(value = "反馈用户")
     private String feedbackUser;
     @ApiModelProperty(value = "页码")
+    private String plan;
     private long page;
     @ApiModelProperty(value = "页码尺寸")
     private long size;

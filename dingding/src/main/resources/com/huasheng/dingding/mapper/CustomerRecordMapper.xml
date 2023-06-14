@@ -12,12 +12,13 @@
         <result property="pay_for_situation" column="payForSituation"></result>
         <result property="existing_problem" column="existingProblem"></result>
         <result property="solution" column="solution"></result>
+        <result property="plan" column="plan"></result>
         <result property="feedback_user" column="feedbackUser"></result>
         <result property="update_time" column="updateTime"></result>
     </resultMap>
 
     <sql id="BASE_COLUMN">
-        `id`,customer_id,visit_situation,price_situation,pay_for_situation,existing_problem,solution,feedback_user,
+        `id`,customer_id,visit_situation,price_situation,pay_for_situation,existing_problem,solution,feedback_user,plan,
          DATE_FORMAT(update_time,'%Y-%m-%d %H:%i:%s') as update_time
     </sql>
 

@@ -20,6 +20,8 @@ public class CustomerRecord {
   private String payForSituation;
   private String existingProblem;
   private String solution;
+  private String plan;
   private String feedbackUser;
   private String updateTime;
+
 }

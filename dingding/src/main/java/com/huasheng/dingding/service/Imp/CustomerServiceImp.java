@@ -113,7 +113,7 @@ public class CustomerServiceImp extends ServiceImpl<CustomerInfoMapper,CustomerI
     public Result<Map<String,Object>> selectCustomerInfoRecord(CustomerInfoDto customerInfoDto) {
         try{
             QueryWrapper<CustomerRecord> queryWrapper = new QueryWrapper<>();
-            queryWrapper.eq(StringUtils.isNotBlank(customerInfoDto.getCustomerId()), "customer_id", customerInfoDto.getCustomerId());
+            queryWrapper.eq(StringUtils.isNotBlank(customerInfoDto.getCustomerCode()), "customer_code", customerInfoDto.getCustomerCode());
             Page<CustomerRecord> callInProjectPage = new Page<>(customerInfoDto.getPage(),customerInfoDto.getSize());
             Page<CustomerRecord> customerRecordPage = customerRecordMapper.selectCustomerRecord(callInProjectPage, queryWrapper);
             List<CustomerRecord> records = customerRecordPage.getRecords();
@@ -133,7 +133,7 @@ public class CustomerServiceImp extends ServiceImpl<CustomerInfoMapper,CustomerI
     public Result<Map<String,Object>> selectResearchInfoRecord(CustomerInfoDto customerInfoDto) {
         try{
             QueryWrapper<ResearchRecord> queryWrapper = new QueryWrapper<>();
-            queryWrapper.eq(StringUtils.isNotBlank(customerInfoDto.getCustomerId()) , "customer_id", customerInfoDto.getCustomerId());
+            queryWrapper.eq(StringUtils.isNotBlank(customerInfoDto.getCustomerCode()) , "customer_code", customerInfoDto.getCustomerCode());
             Page<ResearchRecord> callInProjectPage = new Page<>(customerInfoDto.getPage(),customerInfoDto.getSize());
             Page<ResearchRecord> customerRecordPage = researchRecordMapper.selectResearchRecord(callInProjectPage, queryWrapper);
             List<ResearchRecord> records = customerRecordPage.getRecords();
@@ -264,11 +264,12 @@ public class CustomerServiceImp extends ServiceImpl<CustomerInfoMapper,CustomerI
                         customerExcel.setExistingProblem(r.getExistingProblem());
                         customerExcel.setCustomerUpdateTime(r.getCustomerUpdateTime());
                         customerExcel.setFeedbackUser(r.getFeedbackUser());
-                        customerExcel.setPriceSituation(r.getPriceSituation());
-                        customerExcel.setPayForSituation(r.getPayForSituation());
                         customerExcel.setVisitSituation(r.getVisitSituation());
                         customerExcel.setSolution(r.getSolution());
-                        customerExcel.setResearchExistingProblem(r.getResearchExistingProblem());
+                        customerExcel.setPlan(r.getPlan());
+                        customerExcel.setSamplingInfo(r.getSamplingInfo());
+                        customerExcel.setResearchSituation(r.getResearchSituation());
+                        customerExcel.setCoatingScheme(r.getCoatingScheme());
                         customerExcel.setResearchFeedbackUser(r.getResearchFeedbackUser());
                         customerExcel.setResearchUpdateTime(r.getResearchUpdateTime());
                         customerExcel.setResearchSolution(r.getSolution());

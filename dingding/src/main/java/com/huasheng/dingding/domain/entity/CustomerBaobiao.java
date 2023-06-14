@@ -22,6 +22,7 @@ public class CustomerBaobiao {
   private String payForSituation;
   private String existingProblem;
   private String solution;
+  private String plan;
   private String feedbackUser;
   private String customerUpdateTime;
   private String researchSituation;
@@ -29,5 +30,8 @@ public class CustomerBaobiao {
   private String researchSolution;
   private String researchFeedbackUser;
   private String researchUpdateTime;
+  private String samplingTime;
+  private String samplingInfo;
+  private String coatingScheme;
 
 }
