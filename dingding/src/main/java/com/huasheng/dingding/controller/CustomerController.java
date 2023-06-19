@@ -6,6 +6,7 @@ import com.huasheng.dingding.domain.dto.CustomerInfoDto;
 import com.huasheng.dingding.domain.dto.CustomerRecordDto;
 import com.huasheng.dingding.domain.dto.ResearchRecordDto;
 import com.huasheng.dingding.domain.entity.CustomerInfo;
+import com.huasheng.dingding.domain.vo.CustomerInfoVo;
 import com.huasheng.dingding.service.CustomerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -30,7 +31,7 @@ public class CustomerController {
 
     @ApiOperation(value = "展示客户信息")
     @RequestMapping(value = "/showCustomerInfo",method = RequestMethod.POST)
-    public Result<CustomerInfo> showCustomerInfo(@RequestBody CustomerInfoDto customerInfoDto){
+    public Result<CustomerInfoVo> showCustomerInfo(@RequestBody CustomerInfoDto customerInfoDto){
         return customerService.showCustomerInfo(customerInfoDto);
     }
 

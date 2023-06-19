@@ -13,10 +13,8 @@ import com.huasheng.dingding.domain.dto.CustomerInfoDto;
 import com.huasheng.dingding.domain.dto.CustomerRecordDto;
 import com.huasheng.dingding.domain.dto.ResearchRecordDto;
 import com.huasheng.dingding.domain.entity.*;
-import com.huasheng.dingding.mapper.CustomerInfoMapper;
-import com.huasheng.dingding.mapper.CustomerRecordBaoBiaoMapper;
-import com.huasheng.dingding.mapper.CustomerRecordMapper;
-import com.huasheng.dingding.mapper.ResearchRecordMapper;
+import com.huasheng.dingding.domain.vo.CustomerInfoVo;
+import com.huasheng.dingding.mapper.*;
 import com.huasheng.dingding.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.utils.Lists;
@@ -31,9 +29,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
@@ -55,15 +51,29 @@ public class CustomerServiceImp extends ServiceImpl<CustomerInfoMapper,CustomerI
     private ResearchRecordMapper researchRecordMapper;
 
     @Resource
+    private CustomerNeedTypeMapper customerNeedTypeMapper;
+
+    @Resource
     private CustomerRecordBaoBiaoMapper customerRecordBaoBiaoMapper;
 
     @Override
-    public Result<CustomerInfo> showCustomerInfo(CustomerInfoDto customerInfoDto) {
+    public Result<CustomerInfoVo> showCustomerInfo(CustomerInfoDto customerInfoDto) {
         try {
             QueryWrapper<CustomerInfo> wrapper = new QueryWrapper<>();
             wrapper.eq(customerInfoDto.getId()>0, "id", customerInfoDto.getId());
             CustomerInfo customerInfo = customerInfoMapper.selectOne(wrapper);
-            return ResultUtils.SUCCESS_DATA(customerInfo);
+            CustomerInfoVo customerInfoVo = new CustomerInfoVo();
+            BeanUtils.copyProperties(customerInfo,customerInfoVo);
+            String customerNeed = customerInfo.getCustomerNeed();
+            List<String> userNeedLists = Arrays.asList(customerNeed.split(","));
+            List<String> userNeedTypeName = new ArrayList<>();
+            for (String needList : userNeedLists) {
+                String needName = customerNeedTypeMapper.selectById(needList).getCustomerNeedName();
+                userNeedTypeName.add(needName);
+            }
+            customerInfoVo.setCustomerNeed(userNeedTypeName);
+            customerInfoVo.setCustomerId(userNeedLists);
+            return ResultUtils.SUCCESS_DATA(customerInfoVo);
         } catch (Exception e) {
             log.error("客户信息查询失败:" + e);
             throw new MyException(e.toString());
@@ -77,8 +87,11 @@ public class CustomerServiceImp extends ServiceImpl<CustomerInfoMapper,CustomerI
          if(id <= 0){
             return ResultUtils.ERROR("客户信息异常");
          }
+        List<String> customerNeed = customerInfoDto.getCustomerNeed();
+        String join = String.join(",", customerNeed);
         CustomerInfo customerInfo = new CustomerInfo();
         BeanUtils.copyProperties(customerInfoDto,customerInfo);
+        customerInfo.setCustomerNeed(join);
         boolean update = this.update(customerInfo, null);
         if (update){
             return ResultUtils.SUCCESS();
@@ -102,6 +115,9 @@ public class CustomerServiceImp extends ServiceImpl<CustomerInfoMapper,CustomerI
 //        customerInfo.setCustomerName(customerInfoDto.getCustomerName());
 //        customerInfo.setCustomerCode(customerInfoDto.getCustomerCode());
         BeanUtils.copyProperties(customerInfoDto,customerInfo,IGNORE_ISOLATOR_PROPERTIES);
+        List<String> customerNeed = customerInfoDto.getCustomerNeed();
+        String join = String.join(",", customerNeed);
+        customerInfo.setCustomerNeed(join);
         boolean save = this.save(customerInfo);
         if (!save){
             return ResultUtils.ERROR("客户信息插入异常");
@@ -114,6 +130,7 @@ public class CustomerServiceImp extends ServiceImpl<CustomerInfoMapper,CustomerI
         try{
             QueryWrapper<CustomerRecord> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq(StringUtils.isNotBlank(customerInfoDto.getCustomerCode()), "customer_code", customerInfoDto.getCustomerCode());
+            queryWrapper.orderByDesc("update_time");
             Page<CustomerRecord> callInProjectPage = new Page<>(customerInfoDto.getPage(),customerInfoDto.getSize());
             Page<CustomerRecord> customerRecordPage = customerRecordMapper.selectCustomerRecord(callInProjectPage, queryWrapper);
             List<CustomerRecord> records = customerRecordPage.getRecords();
@@ -134,6 +151,7 @@ public class CustomerServiceImp extends ServiceImpl<CustomerInfoMapper,CustomerI
         try{
             QueryWrapper<ResearchRecord> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq(StringUtils.isNotBlank(customerInfoDto.getCustomerCode()) , "customer_code", customerInfoDto.getCustomerCode());
+            queryWrapper.orderByDesc("update_time");
             Page<ResearchRecord> callInProjectPage = new Page<>(customerInfoDto.getPage(),customerInfoDto.getSize());
             Page<ResearchRecord> customerRecordPage = researchRecordMapper.selectResearchRecord(callInProjectPage, queryWrapper);
             List<ResearchRecord> records = customerRecordPage.getRecords();

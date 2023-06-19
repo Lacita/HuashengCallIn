@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.core.toolkit.Constants;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.huasheng.dingding.domain.entity.CustomerInfo;
 import com.huasheng.dingding.domain.entity.CustomerRecord;
+import com.huasheng.dingding.domain.vo.CustomerDetailsVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -16,5 +17,6 @@ import org.springframework.stereotype.Repository;
 public interface CustomerInfoMapper extends BaseMapper<CustomerInfo> {
 
     Page<CustomerInfo> selectCustomByVo(IPage<CustomerInfo> page, @Param(Constants.WRAPPER) Wrapper<CustomerInfo> queryWrapper);
+
 
 }

@@ -11,6 +11,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @ApiModel(value = "客户信息")
@@ -29,7 +30,7 @@ public class CustomerInfo implements Serializable {
   private String customerPhone;
   private String productionCapacity;
   private String deviceName;
-  private int customerNeed;
+  private String customerNeed;
   private String customerNeedDevice;
   private String businessCompetitor;
   private String isMarket;

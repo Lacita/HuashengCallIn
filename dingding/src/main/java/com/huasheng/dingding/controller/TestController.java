@@ -11,6 +11,7 @@ import com.huasheng.dingding.domain.entity.ClockIn;
 import com.huasheng.dingding.mapper.ClockInMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,8 +24,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-//@RestController
-//@RequestMapping("/test")
+@Profile("dev")
+@RestController
+@RequestMapping("/test")
 public class TestController {
 
     @Resource
