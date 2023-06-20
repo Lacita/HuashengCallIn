@@ -25,6 +25,7 @@ public class CustomerInfoDto {
     private String businessCompetitor;
     private String isMarket;
     private String operateUser;
+    private String customerId;
     @ApiModelProperty(value = "页码")
     private long page;
     @ApiModelProperty(value = "展示数量")

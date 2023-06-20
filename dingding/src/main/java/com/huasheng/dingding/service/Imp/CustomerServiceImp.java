@@ -129,7 +129,7 @@ public class CustomerServiceImp extends ServiceImpl<CustomerInfoMapper,CustomerI
     public Result<Map<String,Object>> selectCustomerInfoRecord(CustomerInfoDto customerInfoDto) {
         try{
             QueryWrapper<CustomerRecord> queryWrapper = new QueryWrapper<>();
-            queryWrapper.eq(StringUtils.isNotBlank(customerInfoDto.getCustomerCode()), "customer_code", customerInfoDto.getCustomerCode());
+            queryWrapper.eq(StringUtils.isNotBlank(customerInfoDto.getCustomerId()) , "customer_id", customerInfoDto.getCustomerId());
             queryWrapper.orderByDesc("update_time");
             Page<CustomerRecord> callInProjectPage = new Page<>(customerInfoDto.getPage(),customerInfoDto.getSize());
             Page<CustomerRecord> customerRecordPage = customerRecordMapper.selectCustomerRecord(callInProjectPage, queryWrapper);
@@ -150,7 +150,7 @@ public class CustomerServiceImp extends ServiceImpl<CustomerInfoMapper,CustomerI
     public Result<Map<String,Object>> selectResearchInfoRecord(CustomerInfoDto customerInfoDto) {
         try{
             QueryWrapper<ResearchRecord> queryWrapper = new QueryWrapper<>();
-            queryWrapper.eq(StringUtils.isNotBlank(customerInfoDto.getCustomerCode()) , "customer_code", customerInfoDto.getCustomerCode());
+            queryWrapper.eq(StringUtils.isNotBlank(customerInfoDto.getCustomerId()) , "customer_id", customerInfoDto.getCustomerId());
             queryWrapper.orderByDesc("update_time");
             Page<ResearchRecord> callInProjectPage = new Page<>(customerInfoDto.getPage(),customerInfoDto.getSize());
             Page<ResearchRecord> customerRecordPage = researchRecordMapper.selectResearchRecord(callInProjectPage, queryWrapper);

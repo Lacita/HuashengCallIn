@@ -183,7 +183,7 @@ CREATE TABLE `customer_info`  (
   `production_capacity` varchar(32) comment '生产能力',
   `sale_per_year` int comment '年销售额',
   `device_name` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '预售设备',
-  `customer_need` int comment '客户需求',
+  `customer_need` varchar(32) comment '客户需求',
   `business_competitor` varchar(64) comment '友商竞争情况',
   `is_market` char(4) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '是否上市',
   `operate_user` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '操作客服',
@@ -263,5 +263,24 @@ CREATE TABLE `sys_user`  (
   `note` varchar(254) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+DROP TABLE IF EXISTS `customer_need_type`;
+CREATE TABLE `customer_need_type`  (
+                                       `customer_need_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+                                       `customer_need_name` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '客户需求样品',
+                                       `customer_need_type` tinyint(4) NULL DEFAULT 0 COMMENT '样品状态',
+                                       PRIMARY KEY (`customer_need_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of customer_need_type
+-- ----------------------------
+INSERT INTO `customer_need_type` VALUES (1, '刀片', 0);
+INSERT INTO `customer_need_type` VALUES (2, '铣刀', 0);
+INSERT INTO `customer_need_type` VALUES (3, '钻头', 0);
+INSERT INTO `customer_need_type` VALUES (4, '丝锥', 0);
+INSERT INTO `customer_need_type` VALUES (5, '滚刀', 0);
+INSERT INTO `customer_need_type` VALUES (6, '锣刀', 0);
+INSERT INTO `customer_need_type` VALUES (7, '其他', 0);
 
 SET FOREIGN_KEY_CHECKS = 1;
