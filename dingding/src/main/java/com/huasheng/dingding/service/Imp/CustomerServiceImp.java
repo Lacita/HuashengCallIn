@@ -65,14 +65,19 @@ public class CustomerServiceImp extends ServiceImpl<CustomerInfoMapper,CustomerI
             CustomerInfoVo customerInfoVo = new CustomerInfoVo();
             BeanUtils.copyProperties(customerInfo,customerInfoVo);
             String customerNeed = customerInfo.getCustomerNeed();
-            List<String> userNeedLists = Arrays.asList(customerNeed.split(","));
-            List<String> userNeedTypeName = new ArrayList<>();
-            for (String needList : userNeedLists) {
-                String needName = customerNeedTypeMapper.selectById(needList).getCustomerNeedName();
-                userNeedTypeName.add(needName);
+            if (StringUtils.isNotBlank(customerNeed)) {
+                List<String> userNeedLists = Arrays.asList(customerNeed.split(","));
+                List<String> userNeedTypeName = new ArrayList<>();
+                for (String needList : userNeedLists) {
+                    String needName = customerNeedTypeMapper.selectById(needList).getCustomerNeedName();
+                    userNeedTypeName.add(needName);
+                }
+                customerInfoVo.setCustomerNeed(userNeedTypeName);
+                customerInfoVo.setCustomerNeedId(userNeedLists);
+                return ResultUtils.SUCCESS_DATA(customerInfoVo);
             }
-            customerInfoVo.setCustomerNeed(userNeedTypeName);
-            customerInfoVo.setCustomerId(userNeedLists);
+            customerInfoVo.setCustomerNeed(null);
+            customerInfoVo.setCustomerNeedId(null);
             return ResultUtils.SUCCESS_DATA(customerInfoVo);
         } catch (Exception e) {
             log.error("客户信息查询失败:" + e);
@@ -87,12 +92,14 @@ public class CustomerServiceImp extends ServiceImpl<CustomerInfoMapper,CustomerI
          if(id <= 0){
             return ResultUtils.ERROR("客户信息异常");
          }
-        List<String> customerNeed = customerInfoDto.getCustomerNeed();
-        String join = String.join(",", customerNeed);
         CustomerInfo customerInfo = new CustomerInfo();
         BeanUtils.copyProperties(customerInfoDto,customerInfo);
-        customerInfo.setCustomerNeed(join);
-        boolean update = this.update(customerInfo, null);
+        List<String> customerNeed = customerInfoDto.getCustomerNeed();
+        if (customerNeed.size() !=0 || CollectionUtils.isNotEmpty(customerNeed)) {
+            String join = String.join(",", customerNeed);
+            customerInfo.setCustomerNeed(join);
+        }
+        boolean update = this.updateById(customerInfo);
         if (update){
             return ResultUtils.SUCCESS();
         }
@@ -112,12 +119,12 @@ public class CustomerServiceImp extends ServiceImpl<CustomerInfoMapper,CustomerI
             return ResultUtils.ERROR("客户信息已录入");
         }
         CustomerInfo customerInfo = new CustomerInfo();
-//        customerInfo.setCustomerName(customerInfoDto.getCustomerName());
-//        customerInfo.setCustomerCode(customerInfoDto.getCustomerCode());
         BeanUtils.copyProperties(customerInfoDto,customerInfo,IGNORE_ISOLATOR_PROPERTIES);
         List<String> customerNeed = customerInfoDto.getCustomerNeed();
-        String join = String.join(",", customerNeed);
-        customerInfo.setCustomerNeed(join);
+        if (customerNeed.size() !=0 || CollectionUtils.isNotEmpty(customerNeed)) {
+            String join = String.join(",", customerNeed);
+            customerInfo.setCustomerNeed(join);
+        }
         boolean save = this.save(customerInfo);
         if (!save){
             return ResultUtils.ERROR("客户信息插入异常");

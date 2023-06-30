@@ -1,8 +1,6 @@
 package com.huasheng.dingding.domain.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
@@ -25,13 +23,21 @@ public class CustomerInfo implements Serializable {
   private String customerName;
   private String customerType;
   private String currentStatus;
+  @TableField(strategy = FieldStrategy.IGNORED)
   private String salePerYear;
+  @TableField(strategy = FieldStrategy.IGNORED)
   private String customerAddress;
+  @TableField(strategy = FieldStrategy.IGNORED)
   private String customerPhone;
+  @TableField(strategy = FieldStrategy.IGNORED)
   private String productionCapacity;
+  @TableField(strategy = FieldStrategy.IGNORED)
   private String deviceName;
+  @TableField(strategy = FieldStrategy.IGNORED)
   private String customerNeed;
+  @TableField(strategy = FieldStrategy.IGNORED)
   private String customerNeedDevice;
+  @TableField(strategy = FieldStrategy.IGNORED)
   private String businessCompetitor;
   private String isMarket;
   private String operateUser;

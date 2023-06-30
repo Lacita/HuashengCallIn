@@ -29,7 +29,7 @@ public class CustomerInfoVo {
     private String productionCapacity;
     private String deviceName;
     private List<String> customerNeed;
-    private List<String> customerId;
+    private List<String> customerNeedId;
     private String customerNeedDevice;
     private String businessCompetitor;
     private String isMarket;
