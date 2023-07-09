@@ -12,10 +12,14 @@
         <result property="solution" column="solution"></result>
         <result property="feedback_user" column="feedbackUser"></result>
         <result property="update_time" column="updateTime"></result>
+        <result property="samplingTime" column="sampling_time"></result>
+        <result property="samplingInfo" column="sampling_info"></result>
+        <result property="coatingScheme" column="coating_scheme"></result>
     </resultMap>
 
     <sql id="BASE_COLUMN">
         `id`,customer_id,research_situation,existing_problem,solution,feedback_user,
+        sampling_time,sampling_info,coating_scheme,
          DATE_FORMAT(update_time,'%Y-%m-%d %H:%i:%s') as update_time
     </sql>
 

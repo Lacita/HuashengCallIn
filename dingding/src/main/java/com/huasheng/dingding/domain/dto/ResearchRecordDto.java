@@ -19,6 +19,9 @@ public class ResearchRecordDto {
     private String solution;
     @ApiModelProperty(value = "反馈用户",required = true)
     private String feedbackUser;
+    private String samplingTime;
+    private String samplingInfo;
+    private String coatingScheme;
     @ApiModelProperty(value = "页码")
     private long page;
     @ApiModelProperty(value = "页码大小")

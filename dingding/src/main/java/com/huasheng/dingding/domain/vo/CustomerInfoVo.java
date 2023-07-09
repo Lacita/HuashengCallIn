@@ -1,16 +1,24 @@
-package com.huasheng.dingding.domain.dto;
+package com.huasheng.dingding.domain.vo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.List;
 
-@ApiModel(value = "用户信息DTO")
+@ApiModel(value = "客户信息VO")
+@TableName(value = "customer_info")
 @Data
-public class CustomerInfoDto {
+public class CustomerInfoVo {
     @ApiModelProperty(value = "主键",required = true)
-    private long id;
+    @TableId(type = IdType.ID_WORKER)
+    @JsonSerialize(using = ToStringSerializer.class)
+    private Long id;
     private String customerCode;
     private String customerName;
     private String customerType;
@@ -22,13 +30,9 @@ public class CustomerInfoDto {
     private String productionCapacity;
     private String deviceName;
     private List<String> customerNeed;
+    private List<String> customerNeedId;
     private String customerNeedDevice;
     private String businessCompetitor;
     private String isMarket;
     private String operateUser;
-    private String customerId;
-    @ApiModelProperty(value = "页码")
-    private long page;
-    @ApiModelProperty(value = "展示数量")
-    private long size;
 }

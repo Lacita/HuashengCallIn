@@ -11,10 +11,10 @@ spring:
     datasource:
       ds:
         driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1:3306/dddaka?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
-        password: 123456
+        url: jdbc:mysql://121.12.157.57:3306/dddaka?character_set_server=utf8mb4&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+        password: huasheng@123
         type: com.alibaba.druid.pool.DruidDataSource
-        username: root
+        username: huasheng
         initialSize: 10
         minIdle: 2
         maxActive: 20

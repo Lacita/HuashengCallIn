@@ -18,13 +18,17 @@
         <result property="researchFeedbackUser" column="research_feedback_user"></result>
         <result property="researchUpdateTime" column="research_update_time"></result>
         <result property="customerName" column="customer_name"></result>
-        <result property="customerName" column="customer_name"></result>
+        <result property="plan" column="plan"></result>
+        <result property="samplingTime" column="sampling_time"></result>
+        <result property="samplingInfo" column="sampling_info"></result>
+        <result property="coatingScheme" column="coating_scheme"></result>
     </resultMap>
 
     <sql id="BASE_BAOBIAO">
         a.id as `id` ,visit_situation,price_situation,pay_for_situation,existing_problem,solution,
         feedback_user, DATE_FORMAT(customer_update_time,'%Y-%m-%d %H:%i:%s') as customer_update_time,
-        research_situation,research_existing_problem,research_solution,research_feedback_user,
+        research_situation,research_existing_problem,research_solution,research_feedback_user,plan,
+        sampling_time,sampling_info,coating_scheme,
         b.customer_name,b.current_status,DATE_FORMAT(research_update_time,'%Y-%m-%d %H:%i:%s') as research_update_time
     </sql>
 

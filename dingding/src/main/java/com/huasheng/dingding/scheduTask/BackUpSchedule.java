@@ -15,6 +15,7 @@ public class BackUpSchedule {
     public void execute(){
         try {
             log.info("=======================开始备份数据库=========================");
+            log.info("=======================当前备份路径为: G:/HS-DDDK/HS-DDDK/backUp.bat =========================");
             // G:\HS-DDDK\HS-DDDK
             Runtime.getRuntime().exec("cmd /c G:/HS-DDDK/HS-DDDK/backUp.bat"); // 执行备份批处理文件
             log.info("=======================数据库备份成功=========================");

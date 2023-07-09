@@ -6,13 +6,14 @@ import com.huasheng.dingding.domain.dto.CustomerInfoDto;
 import com.huasheng.dingding.domain.dto.CustomerRecordDto;
 import com.huasheng.dingding.domain.dto.ResearchRecordDto;
 import com.huasheng.dingding.domain.entity.CustomerInfo;
+import com.huasheng.dingding.domain.vo.CustomerInfoVo;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 
 public interface CustomerService extends IService<CustomerInfo> {
-    Result<CustomerInfo> showCustomerInfo(CustomerInfoDto customerInfoDto);
+    Result<CustomerInfoVo> showCustomerInfo(CustomerInfoDto customerInfoDto);
 
     Result<String> updateCustomerInfo(CustomerInfoDto customerInfoDto);
 

@@ -22,4 +22,7 @@ public class ResearchRecord {
   private String solution;
   private String feedbackUser;
   private String updateTime;
+  private String samplingTime;
+  private String samplingInfo;
+  private String coatingScheme;
 }

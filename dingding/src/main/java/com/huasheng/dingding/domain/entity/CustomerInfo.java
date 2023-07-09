@@ -1,8 +1,6 @@
 package com.huasheng.dingding.domain.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
@@ -10,49 +8,44 @@ import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import lombok.Data;
 
+import javax.validation.Valid;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @ApiModel(value = "客户信息")
 @TableName(value = "customer_info")
 public class CustomerInfo implements Serializable {
+  @ApiModelProperty(value = "主键",required = true)
   @TableId(type = IdType.ID_WORKER)
   @JsonSerialize(using = ToStringSerializer.class)
-  @ApiModelProperty(value = "用户ID")
   private Long id;
-  @ApiModelProperty(value = "客户代码")
   private String customerCode;
-  @ApiModelProperty(value = "客户名称")
+  @NotBlank(message = "姓名不能为空")
   private String customerName;
-  @ApiModelProperty(value = "客户类型")
   private String customerType;
-  @ApiModelProperty(value = "当前阶段")
   private String currentStatus;
-  @ApiModelProperty(value = "用户ID")
+  private Integer customerOrigin;
+  @TableField(strategy = FieldStrategy.IGNORED)
+  private String salePerYear;
+  @TableField(strategy = FieldStrategy.IGNORED)
   private String customerAddress;
-  @ApiModelProperty(value = "客户手机")
+  @TableField(strategy = FieldStrategy.IGNORED)
   private String customerPhone;
-  @ApiModelProperty(value = "企业类型")
-  private String industryType;
-  @ApiModelProperty(value = "企业规模")
-  private String industrySize;
-  @ApiModelProperty(value = "公司性质")
-  private String corporateNature;
-  @ApiModelProperty(value = "公司规模")
-  private String companySize;
-  @ApiModelProperty(value = "营收规模")
-  private String revenueScale;
-  @ApiModelProperty(value = "回款能力")
-  private String returnRate;
-  @ApiModelProperty(value = "是否上市")
-  private String isMarket;
-  @ApiModelProperty(value = "股票代码")
-  private String stockCode;
-  @ApiModelProperty(value = "产品类型")
-  private String productType;
-  @ApiModelProperty(value = "设备名称")
+  @TableField(strategy = FieldStrategy.IGNORED)
+  private String productionCapacity;
+  @TableField(strategy = FieldStrategy.IGNORED)
   private String deviceName;
-  @ApiModelProperty(value = "操作用户")
+  @TableField(strategy = FieldStrategy.IGNORED)
+  private String customerNeed;
+  @TableField(strategy = FieldStrategy.IGNORED)
+  private String customerNeedDevice;
+  @TableField(strategy = FieldStrategy.IGNORED)
+  private String businessCompetitor;
+  private String isMarket;
   private String operateUser;
 
 }

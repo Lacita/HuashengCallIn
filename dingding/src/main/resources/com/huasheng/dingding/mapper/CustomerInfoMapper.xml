@@ -24,4 +24,29 @@
         ${ew.customSqlSegment}
     </select>
 
+<!--    <resultMap id="customerDetails" type="com.huasheng.dingding.domain.vo.CustomerDetailsVo">-->
+<!--        <id property="id" column="id"></id>-->
+<!--        <result property="customerCode" column="customer_code"></result>-->
+<!--        <result property="customerName" column="customer_name"></result>-->
+<!--        <result property="currentStatus" column="current_status"></result>-->
+<!--        <result property="salePerYear" column="sale_per_year"></result>-->
+<!--        <result property="customerAddress" column="customer_address"></result>-->
+<!--        <result property="customerPhone" column="customer_phone"></result>-->
+<!--        <result property="productionCapacity" column="production_capacity"></result>-->
+<!--        <result property="deviceName" column="device_name"></result>-->
+<!--        <result property="customerNeedDevice" column="customer_need_device"></result>-->
+<!--        <result property="businessCompetitor" column="business_competitor"></result>-->
+<!--        <result property="isMarket" column="is_market"></result>-->
+<!--        <result property="operateUser" column="operate_user"></result>-->
+<!--        <collection property="customerNeed" ofType="CustomerNeedType" >-->
+<!--            <id property="id" column="id"></id>-->
+
+<!--        </collection>-->
+
+<!--    </resultMap>-->
+
+<!--    <select id="showCustomerDetails" resultMap="">-->
+
+<!--    </select>-->
+
 </mapper>
