@@ -95,6 +95,13 @@ public class CustomerServiceImp extends ServiceImpl<CustomerInfoMapper,CustomerI
         CustomerInfo customerInfo = new CustomerInfo();
         BeanUtils.copyProperties(customerInfoDto,customerInfo);
         List<String> customerNeed = customerInfoDto.getCustomerNeed();
+        if (org.springframework.util.CollectionUtils.isEmpty(customerNeed)) {
+            boolean update = this.updateById(customerInfo);
+            if (update){
+                return ResultUtils.SUCCESS();
+            }
+            return ResultUtils.ERROR("客户信息更新失败");
+        }
         if (customerNeed.size() !=0 || CollectionUtils.isNotEmpty(customerNeed)) {
             String join = String.join(",", customerNeed);
             customerInfo.setCustomerNeed(join);
@@ -223,6 +230,7 @@ public class CustomerServiceImp extends ServiceImpl<CustomerInfoMapper,CustomerI
         try {
             QueryWrapper<CustomerInfo> customerInfoQueryWrapper = new QueryWrapper<>();
             customerInfoQueryWrapper.orderByDesc("id");
+            customerInfoQueryWrapper.in("current_status",Arrays.asList(0,1));
             List<CustomerInfo> customerInfos = customerInfoMapper.selectList(customerInfoQueryWrapper);
             return ResultUtils.SUCCESS_DATA(customerInfos);
         }

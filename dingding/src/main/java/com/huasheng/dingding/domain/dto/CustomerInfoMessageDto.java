@@ -17,6 +17,7 @@ public class CustomerInfoMessageDto {
   private String customerPhone;
   private String production_Capacity;
   private String deviceName;
+  private Integer customerOrigin;
   private int customerNeed;
   private String business_Competitor;
   private String isMarket;

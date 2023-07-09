@@ -8,23 +8,23 @@ import com.huasheng.dingding.common.CallInUtils.KnockOffOperate;
 import com.huasheng.dingding.config.DateUtils;
 import com.huasheng.dingding.config.RedisUtils;
 import com.huasheng.dingding.domain.entity.ClockIn;
+import com.huasheng.dingding.domain.entity.CustomerInfo;
 import com.huasheng.dingding.mapper.ClockInMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.context.annotation.Profile;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
+import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Profile("dev")
+//@Profile("dev")
 @RestController
 @RequestMapping("/test")
 public class TestController {
@@ -45,6 +45,7 @@ public class TestController {
     public List<ClockIn> test (){
         String dept = "";
         String userName = "张家杰";
+
         String title = "";
         String startTime = "";
         String endTime = "";
@@ -110,6 +111,14 @@ public class TestController {
     public String test5(){
         return "hello";
     }
+
+    @PostMapping("/6")
+    public String test6(@Valid @RequestBody CustomerInfo customerInfo){
+        return "调用成功";
+    }
+
+
+
 
 
 

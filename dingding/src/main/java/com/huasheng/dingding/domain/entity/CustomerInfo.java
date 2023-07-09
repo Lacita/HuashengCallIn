@@ -8,6 +8,10 @@ import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import lombok.Data;
 
+import javax.validation.Valid;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
@@ -20,9 +24,11 @@ public class CustomerInfo implements Serializable {
   @JsonSerialize(using = ToStringSerializer.class)
   private Long id;
   private String customerCode;
+  @NotBlank(message = "姓名不能为空")
   private String customerName;
   private String customerType;
   private String currentStatus;
+  private Integer customerOrigin;
   @TableField(strategy = FieldStrategy.IGNORED)
   private String salePerYear;
   @TableField(strategy = FieldStrategy.IGNORED)

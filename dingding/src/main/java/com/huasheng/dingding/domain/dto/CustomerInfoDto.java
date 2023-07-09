@@ -14,6 +14,7 @@ public class CustomerInfoDto {
     private String customerCode;
     private String customerName;
     private String customerType;
+    private Integer customerOrigin;
     private String currentStatus;
     private String salePerYear;
     private String customerAddress;
